@@ -1,13 +1,17 @@
 package com.study.springstudy;
 
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+
+@SpringBootApplication
+@ServletComponentScan(basePackages = "com.study.springstudy")
 public class Main {
     public static void main(String[] args) {
 
-        System.out.printf("Hello and welcome!");
+        SpringApplication.run(Main.class, args);
 
-        for (int i = 1; i <= 5; i++) {
 
-            System.out.println("i = " + i);
-        }
     }
 }
