@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+
 @WebServlet("/chap02/v3/*")
 public class FrontControllerV3 extends HttpServlet {
 
@@ -38,7 +39,7 @@ public class FrontControllerV3 extends HttpServlet {
 
         // 요청 파라미터를 전부 읽어서 맵에 담아 리턴하는 메서드 호출
         // 요청 파라미터 : 클라이언트가 서버로 전달한 데이터
-        Map<String,String> parameterMap = createParamMap(req);
+        Map<String, String> parameterMap = createParamMap(req);
 
         ModelAndView mv = controller.process(parameterMap);
 
@@ -62,7 +63,7 @@ public class FrontControllerV3 extends HttpServlet {
 
         Enumeration<String> parameterNames = req.getParameterNames();
 
-        Map<String,String> paramMap = new HashMap<>();
+        Map<String, String> paramMap = new HashMap<>();
 
         while (parameterNames.hasMoreElements()) {
             String key = parameterNames.nextElement();

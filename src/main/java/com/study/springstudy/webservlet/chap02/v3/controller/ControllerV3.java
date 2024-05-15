@@ -14,9 +14,10 @@ import java.util.Map;
 public interface ControllerV3 {
     /**
      * 요청이 들어오면 적절한 처리를 수행
+     *
      * @param paramMap : 요청 정보 ( 쿼리파라미터 ) 를 모두 읽어서 맵에 담음
      * @return - 응답시 보여줄 화면 처리객체(View)와 화면 처리를 위해 사용할 데이터(Model)를
-     *          일괄적으로 처리할 객체 ModelAndView
+     * 일괄적으로 처리할 객체 ModelAndView
      */
     ModelAndView process(Map<String, String> paramMap);
 }
