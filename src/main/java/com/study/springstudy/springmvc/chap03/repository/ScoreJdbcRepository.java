@@ -71,6 +71,28 @@ public class ScoreJdbcRepository implements ScoreRepository {
         }
         return scoreList;
     }
+
+    @Override
+    public Score findOne(long stuNum) {
+        try(Connection conn = connect()) {
+            String sql = "SELECT * FROM tbl_score WHERE stu_num = ?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, stuNum);
+
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                Score s = new Score(rs);
+                return s;
+            }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private Connection connect() throws SQLException {
         return DriverManager.getConnection(url, username, password);
     }

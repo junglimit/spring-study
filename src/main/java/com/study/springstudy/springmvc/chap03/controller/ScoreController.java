@@ -63,9 +63,19 @@ public class ScoreController {
     }
 
     @GetMapping("/detail")
-    public String detail() {
+    public String detail(long stuNum, Model model) {
         System.out.println("/score/detail : GET!");
-        return "";
+        System.out.println("stuNum = " + stuNum);
+        // 1. 상세조회를 원하는 학번을 읽기
+
+        // 2. DB에 상세조회 요청
+        Score score = repository.findOne(stuNum);
+        // 3. DB에서 조회한 회원정보 JSP 에게 전달
+
+        model.addAttribute("s",score);
+
+
+        return "score/score-detail";
     }
 
 }
