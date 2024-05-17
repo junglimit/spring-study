@@ -2,7 +2,7 @@ package com.study.springstudy.springmvc.chap03.controller;
 
 import com.study.springstudy.springmvc.chap03.dto.ScorePostDto;
 import com.study.springstudy.springmvc.chap03.entity.Score;
-import com.study.springstudy.springmvc.chap03.repository.ScoreJdbcRepository;
+//import com.study.springstudy.springmvc.chap03.repository.ScoreJdbcRepository;
 import com.study.springstudy.springmvc.chap03.repository.ScoreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

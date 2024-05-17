@@ -1,12 +1,6 @@
 package com.study.springstudy.webservlet.chap02.v3.controller;
 
-import com.study.springstudy.webservlet.Model;
 import com.study.springstudy.webservlet.ModelAndView;
-import com.study.springstudy.webservlet.View;
-import com.study.springstudy.webservlet.chap02.v2.controller.ControllerV2;
-import com.study.springstudy.webservlet.chap02.v3.controller.JoinController;
-import com.study.springstudy.webservlet.chap02.v3.controller.SaveController;
-import com.study.springstudy.webservlet.chap02.v3.controller.ShowController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
