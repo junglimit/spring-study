@@ -11,7 +11,7 @@ public class ScoreMemoryRepository implements ScoreRepository {
     }
 
     @Override
-    public List<Score> findAll() {
+    public List<Score> findAll(String sort) {
         return null;
     }
 

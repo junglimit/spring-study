@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ import java.util.List;
     - /score/register : POST
 
     3. 성적정보 삭제 요청
-    - /score/remove : POST
+    - /score/remove : GET // 실무에선 POST 써야함
 
     4. 성적정보 상세 조회 요청
     - /score/detail : GET
@@ -41,10 +42,11 @@ public class ScoreController {
 //    }
 
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(@RequestParam(defaultValue = "num") String sort, Model model) {
         System.out.println("/score/list : GET!");
 
-        List<Score> scoreList = repository.findAll();
+        List<Score> scoreList = repository.findAll(sort);
+
         model.addAttribute("sList", scoreList);
 
         return "score/score-list";
@@ -64,10 +66,13 @@ public class ScoreController {
         return "redirect:/score/list";
     }
 
-    @PostMapping("/remove")
-    public String remove() {
-        System.out.println("/score/remove : POST!");
-        return "";
+    @GetMapping("/remove")
+    public String remove(long sn) {
+        System.out.println("/score/remove : GET!");
+
+        repository.delete(sn);
+
+        return "redirect:/score/list";
     }
 
     @GetMapping("/detail")
