@@ -13,6 +13,7 @@ package com.study.springstudy.core.chap04;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component // Hotel 의 객체생성 제어권을 스프링에게 넘김
@@ -32,7 +33,7 @@ public class Hotel {
 
     // 만약에 해당 클래스의 생성자가 단 한개뿐이라면 자동으로 @Autowired 를 붙임 ( 생략 되어있음 , 생성자가 하나만 있어야 함 )
     // 생성자 주입 : 불변성 보장, 문제 가능성 낮음. 대신 유지보수는 빡심 ( 이거쓰셈 )
-    public Hotel(Restaurant restaurant, Chef headChef) {
+    public Hotel(@Qualifier("wwww") Restaurant restaurant, Chef headChef) {
         this.restaurant = restaurant;
         this.headChef = headChef;
     }

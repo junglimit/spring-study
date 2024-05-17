@@ -4,6 +4,7 @@ import com.study.springstudy.springmvc.chap03.dto.ScorePostDto;
 import com.study.springstudy.springmvc.chap03.entity.Score;
 import com.study.springstudy.springmvc.chap03.repository.ScoreJdbcRepository;
 import com.study.springstudy.springmvc.chap03.repository.ScoreRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +29,16 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/score")
+@RequiredArgsConstructor
 public class ScoreController {
 
     // 의존객체 설정
-    private ScoreRepository repository = new ScoreJdbcRepository();
+    private final ScoreRepository repository;
+
+//
+//    public ScoreController(ScoreRepository repository) {
+//        this.repository = repository;
+//    }
 
     @GetMapping("/list")
     public String list(Model model) {

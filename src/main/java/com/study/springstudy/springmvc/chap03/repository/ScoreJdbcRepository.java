@@ -1,11 +1,14 @@
 package com.study.springstudy.springmvc.chap03.repository;
 
 import com.study.springstudy.springmvc.chap03.entity.Score;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository // @Component 랑 같은 효과, 그리고 저장소의 의미를 가짐
 public class ScoreJdbcRepository implements ScoreRepository {
 
     private String url = "jdbc:mariadb://localhost:3306/spring5";

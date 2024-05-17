@@ -2,7 +2,7 @@ package com.study.springstudy.core.chap04;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component("asian")
 public class AsianRestaurant implements Restaurant {
 
     private Chef chef;
