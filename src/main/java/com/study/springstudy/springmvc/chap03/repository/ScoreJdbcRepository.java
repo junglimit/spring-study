@@ -13,9 +13,9 @@ public class ScoreJdbcRepository implements ScoreRepository {
     private String password = "jmg78963";
 
     public ScoreJdbcRepository() {
-        try{
+        try {
             Class.forName("org.mariadb.jdbc.Driver");
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -24,7 +24,7 @@ public class ScoreJdbcRepository implements ScoreRepository {
     public boolean save(Score score) {
 
 
-        try(Connection conn = connect()) {
+        try (Connection conn = connect()) {
 
             String sql = "INSERT INTO tbl_score" +
                     "(stu_name,kor,eng,math,total,average,grade)" +
@@ -41,10 +41,10 @@ public class ScoreJdbcRepository implements ScoreRepository {
 
             int result = pstmt.executeUpdate();
 
-            if( result == 1 ) return true;
+            if (result == 1) return true;
 
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -53,20 +53,21 @@ public class ScoreJdbcRepository implements ScoreRepository {
     @Override
     public List<Score> findAll() {
         List<Score> scoreList = new ArrayList<>();
-        try(Connection conn = connect()) {
+        try (Connection conn = connect()) {
 
             String sql = "SELECT * FROM tbl_score";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
+
             ResultSet rs = pstmt.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 Score s = new Score(rs);
                 scoreList.add(s);
 
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return scoreList;
@@ -74,20 +75,20 @@ public class ScoreJdbcRepository implements ScoreRepository {
 
     @Override
     public Score findOne(long stuNum) {
-        try(Connection conn = connect()) {
+        try (Connection conn = connect()) {
             String sql = "SELECT * FROM tbl_score WHERE stu_num = ?";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setLong(1, stuNum);
 
             ResultSet rs = pstmt.executeQuery();
-            if(rs.next()){
-                Score s = new Score(rs);
-                return s;
+            if (rs.next()) { // rs.next()가 true 라면 return s;
+//                Score s = new Score(rs);
+                return new Score(rs);
             }
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
