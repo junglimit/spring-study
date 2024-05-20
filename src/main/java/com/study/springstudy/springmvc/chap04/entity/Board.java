@@ -22,11 +22,11 @@ public class Board {
     private LocalDateTime regDateTime; // 작성일시
 
     public Board(ResultSet rs) throws SQLException {
+        this.boardNo = rs.getInt("board_no");
         this.title = rs.getString("title");
         this.content = rs.getString("content");
         this.writer = rs.getString("writer");
         this.regDateTime = rs.getTimestamp("reg_date_time").toLocalDateTime();
         this.viewCount = rs.getInt("view_count");
-        this.boardNo = rs.getInt("board_no");
     }
 }

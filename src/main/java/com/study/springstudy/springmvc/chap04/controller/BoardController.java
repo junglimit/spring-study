@@ -1,6 +1,7 @@
 package com.study.springstudy.springmvc.chap04.controller;
 
 
+import com.study.springstudy.springmvc.chap04.dto.BoardWriteRequestDto;
 import com.study.springstudy.springmvc.chap04.entity.Board;
 import com.study.springstudy.springmvc.chap04.reposiroty.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,12 +39,13 @@ public class BoardController {
     // 3. 게시글 등록 요청 (/board/write : POST)
     // -> 목록조회 요청 리다이렉션
     @PostMapping("/write")
-    public String write (Board board) {
+    // 브라우저가 전달한 게시글 내용 읽기
+    public String write (BoardWriteRequestDto dto) {
 //        Board newBoard = new Board();
 //        model.addAttribute("board", newBoard);
 
-        System.out.println("board = " + board);
-        repository.save(board);
+        Board b = dto.toEntity();
+        repository.save(b);
         return "redirect:/board/list";
 
     }
@@ -58,6 +60,13 @@ public class BoardController {
 
     // 5. 게시글 상세 조회 요청 (/board/detail : GET)
 
+    @GetMapping
+    public String detail (int bno, Model model) {
+        model.addAttribute("bno", bno);
+        repository.findOne(bno);
+
+        return "/board/detail";
+    }
 
 
 }
