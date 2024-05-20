@@ -21,11 +21,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RequestMapping("/board")
 public class BoardController {
-   private final BoardRepository repository;
+    private final BoardRepository repository;
 
     // 1. 목록 조회 요청 (/board/list : GET)
     @GetMapping("/list")
-    public String list (Model model) {
+    public String list(Model model) {
         // 데이터 베이스에서 목록을 조회
         List<Board> boardList = repository.findAll();
 
@@ -51,7 +51,7 @@ public class BoardController {
 
     // 2. 글 쓰기 양식 화면 열기 요청 (/board/write : GET)
     @GetMapping("/write")
-    public String write () {
+    public String write() {
 
         return "/board/write";
     }
@@ -60,7 +60,7 @@ public class BoardController {
     // -> 목록조회 요청 리다이렉션
     @PostMapping("/write")
     // 브라우저가 전달한 게시글 내용 읽기
-    public String write (BoardWriteRequestDto dto) {
+    public String write(BoardWriteRequestDto dto) {
 //        Board newBoard = new Board();
 //        model.addAttribute("board", newBoard);
 
@@ -73,17 +73,17 @@ public class BoardController {
     // 4. 게시글 삭제 요청 (/board/delete : GET)
     // -> 목록조회 요청 리다이렉션
     @GetMapping("/delete")
-    public String delete (int bno) {
+    public String delete(int bno) {
         repository.delete(bno);
-                return "redirect:/board/list";
+        return "redirect:/board/list";
     }
 
     // 5. 게시글 상세 조회 요청 (/board/detail : GET)
 
     @GetMapping("/detail")
-    public String detail (int bno, Model model) {
+    public String detail(int bno, Model model) {
         Board b = repository.findOne(bno);
-        if(b != null) repository.upViewCount(bno);
+        if (b != null) repository.upViewCount(bno);
         model.addAttribute("bbb", new BoardDetailResponseDto(b));
 
         return "/board/detail";

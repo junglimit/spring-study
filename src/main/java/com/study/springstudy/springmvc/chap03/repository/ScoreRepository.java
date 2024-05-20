@@ -24,4 +24,8 @@ public interface ScoreRepository {
     // 저장소에서 등수, 전체인원 조회하기
     int[] findRankByStuNum(long stuNum);
 
+    default boolean updateScore(Score s) {
+        return false;
+    }
+
 }
