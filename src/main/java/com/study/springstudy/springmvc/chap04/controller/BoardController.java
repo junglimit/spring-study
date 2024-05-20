@@ -1,6 +1,8 @@
 package com.study.springstudy.springmvc.chap04.controller;
 
 
+import com.study.springstudy.springmvc.chap04.dto.BoardDetailResponseDto;
+import com.study.springstudy.springmvc.chap04.dto.BoardListResponseDto;
 import com.study.springstudy.springmvc.chap04.dto.BoardWriteRequestDto;
 import com.study.springstudy.springmvc.chap04.entity.Board;
 import com.study.springstudy.springmvc.chap04.reposiroty.BoardRepository;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,8 +26,24 @@ public class BoardController {
     // 1. 목록 조회 요청 (/board/list : GET)
     @GetMapping("/list")
     public String list (Model model) {
+        // 데이터 베이스에서 목록을 조회
         List<Board> boardList = repository.findAll();
-        model.addAttribute("boardList", boardList);
+
+        // 클라이언트에 데이터를 보내기 전에 렌더링에 필요한 데이터만 추출
+//        List<BoardWriteRequestDto> bList = new ArrayList<>();
+
+//        for (Board b: boardList) {
+//            BoardWriteRequestDto dto = new BoardWriteRequestDto();
+//            bList.add(dto);
+//        }
+//
+        List<BoardListResponseDto> bList = boardList.stream()
+                .map(b -> new BoardListResponseDto(b))
+                .collect(Collectors.toList());
+
+
+        // jsp 파일에 데이터 전달
+        model.addAttribute("bList", bList);
 
         return "/board/list";
     }
@@ -60,10 +80,10 @@ public class BoardController {
 
     // 5. 게시글 상세 조회 요청 (/board/detail : GET)
 
-    @GetMapping
+    @GetMapping("/detail")
     public String detail (int bno, Model model) {
-        model.addAttribute("bno", bno);
-        repository.findOne(bno);
+        Board b = repository.findOne(bno);
+        model.addAttribute("bbb", new BoardDetailResponseDto(b));
 
         return "/board/detail";
     }
