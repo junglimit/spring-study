@@ -20,22 +20,30 @@ public class BoardService {
 
 
 
-    public List<BoardListResponseDto> findAll() {
+    public List<BoardListResponseDto> findList() {
         List<Board> bList = mapper.findAll();
-        return   bList.stream()
+
+        // 조회해온 게시물 리스트에서 각 게시물들의 조회수를 확인하여
+        // 조회수가 5 이상인 게시물에 특정 마킹
+
+
+        List<BoardListResponseDto> dtoList = bList.stream()
                 .map(b -> new BoardListResponseDto(b))
                 .collect(Collectors.toList());
+        return dtoList;
 
     }
-    public boolean save(BoardWriteRequestDto dto){
+    public boolean insert(BoardWriteRequestDto dto){
         Board b = dto.toEntity();
         return mapper.save(b);
     }
 
 
-    public BoardDetailResponseDto findOne(int boardNo) {
+    public BoardDetailResponseDto detail(int bno) {
+        Board b = mapper.findOne(bno);
+        if(b != null) mapper.upViewCount(bno);
 
-        return new BoardDetailResponseDto(mapper.findOne(boardNo));
+        return new BoardDetailResponseDto(b);
 
     }
 
@@ -46,7 +54,7 @@ public class BoardService {
     }
 
 
-    public boolean delete(int boardNo) {
+    public boolean remove(int boardNo) {
         return mapper.delete(boardNo);
 
     }

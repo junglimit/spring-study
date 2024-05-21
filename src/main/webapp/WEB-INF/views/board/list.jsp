@@ -11,6 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
 
+    <style>
+        .card-container .card .card-title-wrapper .time-view-wrapper>div.hit {
+            background: yellow;
+        }.card-container .card .card-title-wrapper .time-view-wrapper>div.new {
+            background: red;
+        }
+    </style>
+
     <!-- reset -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 
@@ -43,6 +51,15 @@
                                 <i class="far fa-clock"></i>
                                     ${b.date}
                             </div>
+
+                            <c:if test="${b.hit}">
+                            <div class="hit">HIT</div>
+                            </c:if>
+
+                            <c:if test="${b.newArticle}">
+                                <div class="new">NEW</div>
+                            </c:if>
+
                             <div class="view">
                                 <i class="fas fa-eye"></i>
                                 <span class="view-count">${b.view}</span>

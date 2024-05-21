@@ -28,7 +28,7 @@ public class BoardController {
     @GetMapping("/list")
     public String list(Model model) {
         // 데이터 베이스에서 목록을 조회
-        List<BoardListResponseDto> bList = service.findAll();
+        List<BoardListResponseDto> bList = service.findList();
 
         // jsp 파일에 데이터 전달
         model.addAttribute("bList", bList);
@@ -52,7 +52,7 @@ public class BoardController {
 //        Board newBoard = new Board();
 //        model.addAttribute("board", newBoard);
 
-        service.save(dto);
+        service.insert(dto);
         return "redirect:/board/list";
 
     }
@@ -61,7 +61,7 @@ public class BoardController {
     // -> 목록조회 요청 리다이렉션
     @GetMapping("/delete")
     public String delete(int bno) {
-        service.delete(bno);
+        service.remove(bno);
         return "redirect:/board/list";
     }
 
@@ -69,9 +69,8 @@ public class BoardController {
 
     @GetMapping("/detail")
     public String detail(int bno, Model model) {
-        BoardDetailResponseDto b = service.findOne(bno);
-        if (b != null) service.upViewCount(bno);
-        model.addAttribute("bbb", b);
+
+        model.addAttribute("bbb", service.detail(bno));
 
         return "/board/detail";
     }
