@@ -57,8 +57,6 @@ public class ScoreController {
 
     @PostMapping("/register")
     public String register(ScorePostDto dto) {
-        System.out.println("/score/register : POST!");
-        System.out.println("dto = " + dto);
 
         // 데이터베이스에 저장
         service.insert(dto);

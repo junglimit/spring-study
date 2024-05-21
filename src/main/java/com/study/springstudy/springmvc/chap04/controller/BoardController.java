@@ -6,6 +6,7 @@ import com.study.springstudy.springmvc.chap04.dto.BoardListResponseDto;
 import com.study.springstudy.springmvc.chap04.dto.BoardWriteRequestDto;
 import com.study.springstudy.springmvc.chap04.entity.Board;
 import com.study.springstudy.springmvc.chap04.reposiroty.BoardRepository;
+import com.study.springstudy.springmvc.chap04.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,26 +22,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RequestMapping("/board")
 public class BoardController {
-    private final BoardRepository repository;
-
+//    private final BoardRepository repository;
+    private final BoardService service;
     // 1. 목록 조회 요청 (/board/list : GET)
     @GetMapping("/list")
     public String list(Model model) {
         // 데이터 베이스에서 목록을 조회
-        List<Board> boardList = repository.findAll();
-
-        // 클라이언트에 데이터를 보내기 전에 렌더링에 필요한 데이터만 추출
-//        List<BoardWriteRequestDto> bList = new ArrayList<>();
-
-//        for (Board b: boardList) {
-//            BoardWriteRequestDto dto = new BoardWriteRequestDto();
-//            bList.add(dto);
-//        }
-//
-        List<BoardListResponseDto> bList = boardList.stream()
-                .map(b -> new BoardListResponseDto(b))
-                .collect(Collectors.toList());
-
+        List<BoardListResponseDto> bList = service.findAll();
 
         // jsp 파일에 데이터 전달
         model.addAttribute("bList", bList);
@@ -64,8 +52,7 @@ public class BoardController {
 //        Board newBoard = new Board();
 //        model.addAttribute("board", newBoard);
 
-        Board b = dto.toEntity();
-        repository.save(b);
+        service.save(dto);
         return "redirect:/board/list";
 
     }
@@ -74,7 +61,7 @@ public class BoardController {
     // -> 목록조회 요청 리다이렉션
     @GetMapping("/delete")
     public String delete(int bno) {
-        repository.delete(bno);
+        service.delete(bno);
         return "redirect:/board/list";
     }
 
@@ -82,9 +69,9 @@ public class BoardController {
 
     @GetMapping("/detail")
     public String detail(int bno, Model model) {
-        Board b = repository.findOne(bno);
-        if (b != null) repository.upViewCount(bno);
-        model.addAttribute("bbb", new BoardDetailResponseDto(b));
+        BoardDetailResponseDto b = service.findOne(bno);
+        if (b != null) service.upViewCount(bno);
+        model.addAttribute("bbb", b);
 
         return "/board/detail";
     }

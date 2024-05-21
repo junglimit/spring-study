@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -24,5 +26,69 @@ class PersonMapperTest {
         //then
         assertTrue(flag);
     }
+
+    @Test
+    @DisplayName("아이디로 사람 정보를 삭제한다")
+    void delTest () {
+        //given
+        long id = 9999;
+        //when
+        boolean flag = mapper.delete(id);
+        //then
+        assertTrue(flag);
+    }
+
+    @Test
+    @DisplayName("아이디가 300인 사람의 정보를 수정한다")
+    void updateTest () {
+        //given
+        Person p = new Person(300,"뉴마바",300);
+        //when
+        boolean flag = mapper.update(p);
+        //then
+        assertTrue(flag);
+    }
+
+    @Test
+    @DisplayName("전체 조회하면 결과 건수가 5건이다")
+    void findAllTest() {
+        //given
+
+        //when
+        List<Person> people = mapper.findAll();
+        //then
+        people.forEach(System.out::println);
+
+        assertEquals(5, people.size());
+    }
+
+    @Test
+    @DisplayName("id로 사람 정보를 개별 조회한다")
+    void findOneTest () {
+        //given
+        long id = 100;
+        //when
+        Person one = mapper.findOne(id);
+        //then
+        System.out.println("one = " + one);
+        assertEquals("백백이", one.getPersonName());
+    }
+
+
+    @Test
+    @DisplayName("사람수와 이름리스트를 조회한다")
+    void findNameTest () {
+        //given
+
+        //when
+        List<String> names = mapper.findNames();
+        int count = mapper.count();
+        //then
+        names.forEach(System.out::println);
+        System.out.println();
+        System.out.println("count = " + count);
+    }
+
+
 
 }
