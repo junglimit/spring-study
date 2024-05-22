@@ -13,13 +13,17 @@ public class PageMaker {
     private static final int PAGE_COUNT = 10;
 
     // 페이지 시작번호와 끝번호
-    private int begin, end;
+    private int begin, end, finalPage;
+
+    // 이전, 다음버튼 활성화 여부
+    private boolean prev,next;
 
     // 총 게시물 수
     private int totalCount;
 
     // 현재 페이지 정보
     private Page pageInfo;
+
 
     public PageMaker(Page page ,int totalCount) {
         this.pageInfo = page;
@@ -70,12 +74,18 @@ public class PageMaker {
 
          */
 
-        int finalPage = (int) Math.ceil( (double) totalCount / pageInfo.getAmount());
+        this.finalPage = (int) Math.ceil( (double) totalCount / pageInfo.getAmount());
 
         // 마지막 구간에서 end 값을 finalPage 로 보정
         if(finalPage < this.end){
             this.end = finalPage;
         }
+
+        // 4. 이전버튼 활성화 여부
+        this.prev = begin != 1;
+
+        // 5. 다음버튼 활성화 여부
+        this.next = this.end < finalPage;
     }
 
 }
