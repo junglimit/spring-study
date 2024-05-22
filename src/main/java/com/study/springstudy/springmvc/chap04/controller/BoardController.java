@@ -32,7 +32,7 @@ public class BoardController {
         // 데이터 베이스에서 목록을 조회
         List<BoardListResponseDto> bList = service.findList(page);
         // 페이지 정보를 생성하여 JSP 에게 전송
-        PageMaker maker = new PageMaker(page);
+        PageMaker maker = new PageMaker(page, service.getCount());
 
 
         // jsp 파일에 데이터 전달
