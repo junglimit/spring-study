@@ -1,6 +1,7 @@
 package com.study.springstudy.springmvc.chap04.service;
 
 import com.study.springstudy.springmvc.chap04.common.Page;
+import com.study.springstudy.springmvc.chap04.common.Search;
 import com.study.springstudy.springmvc.chap04.dto.BoardDetailResponseDto;
 import com.study.springstudy.springmvc.chap04.dto.BoardListResponseDto;
 import com.study.springstudy.springmvc.chap04.dto.BoardWriteRequestDto;
@@ -21,7 +22,7 @@ public class BoardService {
 
 
 
-    public List<BoardListResponseDto> findList(Page page) {
+    public List<BoardListResponseDto> findList(Search page) {
         List<Board> bList = mapper.findAll(page);
 
         // 조회해온 게시물 리스트에서 각 게시물들의 조회수를 확인하여

@@ -6,22 +6,28 @@
 <mapper namespace="com.study.springstudy.springmvc.chap04.mapper.BoardMapper">
 
     <select id="findAll" resultType="board">
-        select * from tbl_board
-        order by board_no desc
-        limit #{pageStart}, #{amount}
+        SELECT *
+        FROM tbl_board
+        WHERE title LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY board_no DESC
+        LIMIT #{pageStart}, #{amount}
     </select>
 
     <select id="findOne" resultType="board">
-        select * from tbl_board where board_no = #{boardNo}
-
+        SELECT * FROM tbl_board
+        WHERE board_no = #{boardNo}
     </select>
 
     <insert id="save">
-        insert into tbl_board (title, content, writer) values (#{title}, #{content}, #{writer})
+        INSERT INTO tbl_board
+        (writer, content, title)
+        VALUES
+        (#{writer}, #{content}, #{title})
     </insert>
 
     <delete id="delete">
-        delete from tbl_board where board_no = #{boardNo}
+        DELETE FROM tbl_board
+        WHERE board_no = #{boardNo}
     </delete>
 
     <update id="upViewCount">
@@ -34,4 +40,5 @@
         SELECT COUNT(*)
         FROM tbl_board
     </select>
+
 </mapper>
