@@ -1,5 +1,6 @@
 package com.study.springstudy.springmvc.chap04.service;
 
+import com.study.springstudy.springmvc.chap04.common.Page;
 import com.study.springstudy.springmvc.chap04.dto.BoardDetailResponseDto;
 import com.study.springstudy.springmvc.chap04.dto.BoardListResponseDto;
 import com.study.springstudy.springmvc.chap04.dto.BoardWriteRequestDto;
@@ -20,8 +21,8 @@ public class BoardService {
 
 
 
-    public List<BoardListResponseDto> findList() {
-        List<Board> bList = mapper.findAll();
+    public List<BoardListResponseDto> findList(Page page) {
+        List<Board> bList = mapper.findAll(page);
 
         // 조회해온 게시물 리스트에서 각 게시물들의 조회수를 확인하여
         // 조회수가 5 이상인 게시물에 특정 마킹

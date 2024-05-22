@@ -12,10 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
 
     <style>
-        .card-container .card .card-title-wrapper .time-view-wrapper>div.hit {
-            background: yellow;
-        }.card-container .card .card-title-wrapper .time-view-wrapper>div.new {
+        .card-container .card .card-title-wrapper .time-view-wrapper > div.hit {
             background: red;
+
+        }
+
+        .card-container .card .card-title-wrapper .time-view-wrapper > div.new {
+            background: yellow;
         }
     </style>
 
@@ -53,7 +56,7 @@
                             </div>
 
                             <c:if test="${b.hit}">
-                            <div class="hit">HIT</div>
+                                <div class="hit">HIT</div>
                             </c:if>
 
                             <c:if test="${b.newArticle}">
@@ -93,7 +96,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script>
@@ -163,7 +165,6 @@
     }
 
 
-
     $cardContainer.onmouseover = e => {
 
         if (!e.target.matches('.card-container *')) return;
@@ -192,7 +193,6 @@
     document.querySelector('.add-btn').onclick = e => {
         window.location.href = '/board/write';
     };
-
 
 
 </script>
