@@ -14,9 +14,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,16 +31,18 @@ public class BoardController {
     private final BoardService service;
     // 1. 목록 조회 요청 (/board/list : GET)
     @GetMapping("/list")
-    public String list(Search page, Model model) {
+    public String list(@ModelAttribute("s") Search page, Model model) {
+        System.out.println("page = " + page.getPageNo());
         // 데이터 베이스에서 목록을 조회
         List<BoardListResponseDto> bList = service.findList(page);
         // 페이지 정보를 생성하여 JSP 에게 전송
-        PageMaker maker = new PageMaker(page, service.getCount());
+        PageMaker maker = new PageMaker(page, service.getCount(page));
 
 
         // jsp 파일에 데이터 전달
         model.addAttribute("bList", bList);
         model.addAttribute("maker", maker);
+//        model.addAttribute("s", page);
 
         return "/board/list";
     }
@@ -75,9 +79,14 @@ public class BoardController {
     // 5. 게시글 상세 조회 요청 (/board/detail : GET)
 
     @GetMapping("/detail")
-    public String detail(int bno, Model model) {
+    public String detail(int bno,
+                         Model model,
+                         HttpServletRequest request) {
 
         model.addAttribute("bbb", service.detail(bno));
+
+        String ref = request.getHeader("Referer");
+        model.addAttribute("ref" , ref);
 
         return "/board/detail";
     }

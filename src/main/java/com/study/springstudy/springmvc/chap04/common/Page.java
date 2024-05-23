@@ -22,6 +22,7 @@ public class Page {
             this.amount = 6;
             return;
         }
+        this.amount = amount;
     }
 
     public void setPageNo(int pageNo) {
@@ -29,6 +30,7 @@ public class Page {
             this.pageNo = 1;
             return;
         }
+        this.pageNo = pageNo;
     }
 
     // 필드 셋팅 없이도 getter 를 만들면 mybatis 가 사용할 수 있게 함

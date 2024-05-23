@@ -67,7 +67,7 @@ public class BoardService {
     }
 
 
-    public int getCount() {
-        return mapper.count();
+    public int getCount(Search search) {
+        return mapper.count(search);
     }
 }

@@ -11,17 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
 
-    <style>
-        .card-container .card .card-title-wrapper .time-view-wrapper > div.hit {
-            background: red;
-
-        }
-
-        .card-container .card .card-title-wrapper .time-view-wrapper > div.new {
-            background: yellow;
-        }
-    </style>
-
     <!-- reset -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 
@@ -31,8 +20,15 @@
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/list.css">
+
+    <style>
+        .card-container .card .card-title-wrapper .time-view-wrapper>div.hit {
+            background: yellow;
+        }
+    </style>
 
 </head>
 
@@ -45,19 +41,20 @@
         <button class="add-btn">새 글 쓰기</button>
     </div>
 
+
     <div class="top-section">
         <!-- 검색창 영역 -->
         <div class="search">
             <form action="/board/list" method="get">
 
-                <select class="form-select" name="" id="search-type">
+                <select class="form-select" name="type" id="search-type">
                     <option value="title" selected>제목</option>
                     <option value="content">내용</option>
                     <option value="writer">작성자</option>
                     <option value="tc">제목+내용</option>
                 </select>
 
-                <input type="text" class="form-control" name="">
+                <input type="text" class="form-control" name="keyword">
 
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-search"></i>
@@ -65,11 +62,16 @@
 
             </form>
         </div>
+
+        <div class="amount">
+            <div><a href="#">6</a></div>
+            <div><a href="#">18</a></div>
+            <div><a href="#">30</a></div>
+        </div>
+
     </div>
 
-
     <div class="card-container">
-
 
         <c:forEach var="b" items="${bList}">
             <div class="card-wrapper">
@@ -87,7 +89,7 @@
                             </c:if>
 
                             <c:if test="${b.newArticle}">
-                                <div class="new">NEW</div>
+                                <div class="hit">NEW</div>
                             </c:if>
 
                             <div class="view">
@@ -106,58 +108,59 @@
                     </button>
                 </div>
             </div>
-            <%-- end div.card-wrapper --%>
+            <!-- end div.card-wrapper -->
         </c:forEach>
 
 
-        <%--    end div.card-container  --%>
+    </div>
+    <!-- end div.card-container -->
 
+    <!-- 게시글 목록 하단 영역 -->
+    <div class="bottom-section">
 
-        <!-- 게시글 목록 하단 영역 -->
-        <div class="bottom-section">
+        <!-- 페이지 버튼 영역 -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-lg pagination-custom">
 
-            <!-- 페이지 버튼 영역 -->
-            <nav aria-label="Page navigation example">
-                <ul class="pagination pagination-lg pagination-custom">
-                    <c:if test="${maker.pageInfo.pageNo != 1}">
-                        <li class="page-item">
-                            <a class="page-link" href="/board/list?pageNo=1"><<</a>
-                        </li>
-                    </c:if>
+                <c:if test="${maker.pageInfo.pageNo != 1}">
+                    <li class="page-item">
+                        <a class="page-link" href="/board/list?pageNo=1&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a>
+                    </li>
+                </c:if>
 
-                    <c:if test="${maker.prev}">
-                        <li class="page-item">
-                            <a class="page-link" href="/board/list?pageNo=${maker.begin - 1}">prev</a>
-                        </li>
-                    </c:if>
+                <c:if test="${maker.prev}">
+                    <li class="page-item">
+                        <a class="page-link" href="/board/list?pageNo=${maker.begin - 1}&type=${s.type}&keyword=${s.keyword}">prev</a>
+                    </li>
+                </c:if>
 
-                    <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
-                        <li data-page-num="${i}" class="page-item ${i == maker.pageInfo.pageNo ? 'active' : ''}">
-                            <a class="page-link" href="/board/list?pageNo=${i}">${i}</a>
-                        </li>
-                    </c:forEach>
+                <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
+                    <li data-page-num="${i}" class="page-item">
+                        <a class="page-link" href="/board/list?pageNo=${i}&type=${s.type}&keyword=${s.keyword}">${i}</a>
+                    </li>
+                </c:forEach>
 
-                    <c:if test="${maker.next}">
-                        <li class="page-item">
-                            <a class="page-link" href="/board/list?pageNo=${maker.end + 1}">next</a>
-                        </li>
-                    </c:if>
+                <c:if test="${maker.next}">
+                    <li class="page-item">
+                        <a class="page-link" href="/board/list?pageNo=${maker.end + 1}&type=${s.type}&keyword=${s.keyword}">next</a>
+                    </li>
+                </c:if>
 
-                    <c:if test="${maker.pageInfo.pageNo != maker.finalPage}">
-                        <li class="page-item">
-                            <a class="page-link" href="/board/list?pageNo=${maker.finalPage}">>></a>
-                        </li>
-                    </c:if>
+                <c:if test="${maker.pageInfo.pageNo != maker.finalPage}">
+                    <li class="page-item">
+                        <a class="page-link" href="/board/list?pageNo=${maker.finalPage}&type=${s.type}&keyword=${s.keyword}">&gt;&gt;</a>
+                    </li>
+                </c:if>
 
-                </ul>
-            </nav>
-
-        </div>
-        <!— end div.bottom-section —>
+            </ul>
+        </nav>
 
     </div>
+    <!-- end div.bottom-section -->
+
 </div>
-<%-- end div.wrap --%>
+<!-- end div.wrap -->
+
 
 <!-- 모달 창 -->
 <div class="modal" id="modal">
@@ -171,28 +174,8 @@
 </div>
 
 
+
 <script>
-
-
-    <%-- 자바스크립트로 현재 페이지에 클래스 추가 --%>
-    <%--function appendActivePage() {--%>
-
-    <%--    // 1. 현재 위치한 페이지 번호를 알아낸다.--%>
-    <%--    //  -> 주소창에 묻어있는 페이지 파라미터 숫자를 읽거나--%>
-    <%--    //     서버에서 내려준 페이지번호를 읽는다.--%>
-    <%--    const currentPage = '${maker.pageInfo.pageNo}';--%>
-    <%--    console.log('현재페이지: ' + currentPage);--%>
-
-    <%--    // 2. 해당 페이지번호와 일치하는 li태그를 탐색한다.--%>
-    <%--    const $li = document.querySelector(`.pagination li[data-page-num="\${currentPage}"]`);--%>
-
-    <%--    // 3. 해당 li태그에 class = active를 추가한다.--%>
-    <%--    $li.classList.add('active');--%>
-
-    <%--}--%>
-
-    <%--appendActivePage();--%>
-
 
     const $cardContainer = document.querySelector('.card-container');
 
@@ -208,9 +191,9 @@
             modal.style.display = 'flex'; // 모달 창 띄움
 
             const $delBtn = e.target.closest('.del-btn');
-
             // 삭제 링크주소 얻기
             const deleteLocation = $delBtn.dataset.href;
+            console.log(deleteLocation);
 
             // 확인 버튼 이벤트
             confirmDelete.onclick = e => {
@@ -259,6 +242,7 @@
     }
 
 
+
     $cardContainer.onmouseover = e => {
 
         if (!e.target.matches('.card-container *')) return;
@@ -287,6 +271,26 @@
     document.querySelector('.add-btn').onclick = e => {
         window.location.href = '/board/write';
     };
+
+    function appendActivePage() {
+
+        // 1. 현재 위치한 페이지 번호를 알아낸다.
+        //  -> 주소창에 묻어있는 페이지 파라미터 숫자를 읽거나
+        //     서버에서 내려준 페이지번호를 읽는다.
+        const currentPage = '${maker.pageInfo.pageNo}';
+        console.log('현재페이지: ' + currentPage);
+
+        // 2. 해당 페이지번호와 일치하는 li태그를 탐색한다.
+        const $li = document.querySelector(`.pagination li[data-page-num="\${currentPage}"]`);
+
+        // 3. 해당 li태그에 class = active를 추가한다.
+        $li.classList.add('active');
+
+    }
+
+    appendActivePage();
+
+
 
 
 </script>
