@@ -32,7 +32,7 @@ public class BoardController {
     // 1. 목록 조회 요청 (/board/list : GET)
     @GetMapping("/list")
     public String list(@ModelAttribute("s") Search page, Model model) {
-        System.out.println("page = " + page.getPageNo());
+//        System.out.println("page = " + page.getPageNo());
         // 데이터 베이스에서 목록을 조회
         List<BoardListResponseDto> bList = service.findList(page);
         // 페이지 정보를 생성하여 JSP 에게 전송
