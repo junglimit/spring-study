@@ -83,6 +83,7 @@ public class BoardController {
                          Model model,
                          HttpServletRequest request) {
 
+        BoardDetailResponseDto dto = service.detail(bno);
         model.addAttribute("bbb", service.detail(bno));
 
         String ref = request.getHeader("Referer");
