@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0f5a1f4-4c11-4da5-8c7e-581bc75ef0ac" name="변경" comment="" />
+    <list default="true" id="d0f5a1f4-4c11-4da5-8c7e-581bc75ef0ac" name="변경" comment="REST API 기초">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/rest/RestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/rest/RestApiController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,28 +18,284 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="springstudy" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="jsp template" />
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2gOySldoslVCQioljxXj3zpWxRz" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/jeongjaehan/Desktop/Developer/springstudy/src/main/java/com/study/Main.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.BoardMapperTest.insertTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BoardRepositoryImplTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BoardRepositoryImplTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BoardRepositoryImplTest.saveTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HoteDiTest.diTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HotelSpringDiTest.diTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HotelSpringDiTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HotelTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HotelTest.hotelTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonMapperTest.delTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonMapperTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonMapperTest.findNameTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonMapperTest.findOneTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonMapperTest.saveTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonMapperTest.updateTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReplyMapperTest.bulkInsert (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReplyMapperTest.bulkInsert.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReplyMapperTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReplyMapperTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ReplyMapperTest.modifyTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ScoreMapperTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ScoreMapperTest.findOneTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ScoreMapperTest.rankTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SpringJdbcTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SpringJdbcTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SpringJdbcTest.findOneTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SpringJdbcTest.modifyTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SpringJdbcTest.saveTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StudentTest.sTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.springstudy [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.springstudy 빌드.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/jeongjaehan/Desktop/Developer/springstudy/src/main/java/com/study/springstudy/springmvc/chap05&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jeongjaehan/Desktop/Developer/springstudy/src/main/resources/static/assets/img&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/jeongjaehan/Desktop/Developer/springstudy/src/main/java/com/study/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.study.springstudy.database.chap01" />
+      <recent name="com.study.springstudy.springmvc.chap03.entity" />
+      <recent name="com.study.springstudy.chap02" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static/assets/img" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/study/springstudy/core/chap04" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/v5" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/v3" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/v2" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.study.springstudy.chap05" />
+      <recent name="com.study.springstudy.springmvc.chap04.mapper" />
+      <recent name="com.study.springstudy.springmvc.chap03.mapper" />
+      <recent name="com.study.springstudy.database.chap02" />
+      <recent name="com.study.springstudy.springmvc.chap04.reposiroty" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.study.springstudy.webservlet.chap02.v3.controller" />
+      <recent name="com.study.springstudy.webservlet.chap02.v2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Main">
+    <configuration name="ReplyMapperTest.bulkInsert (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.study.springstudy.springmvc.chap05.ReplyMapperTest.bulkInsert&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReplyMapperTest.bulkInsert" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.study.springstudy.chap05.ReplyMapperTest.bulkInsert&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReplyMapperTest.deleteTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.study.springstudy.springmvc.chap05.ReplyMapperTest.deleteTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReplyMapperTest.findAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.study.springstudy.springmvc.chap05.ReplyMapperTest.findAllTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReplyMapperTest.modifyTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.study.springstudy.springmvc.chap05.ReplyMapperTest.modifyTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="springstudy.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.springstudy.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ReplyMapperTest.modifyTest" />
+        <item itemvalue="Gradle.ReplyMapperTest.deleteTest" />
+        <item itemvalue="Gradle.ReplyMapperTest.findAllTest" />
+        <item itemvalue="Gradle.ReplyMapperTest.bulkInsert (1)" />
+        <item itemvalue="Gradle.ReplyMapperTest.bulkInsert" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -52,21 +311,314 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715582920808</updated>
-      <workItem from="1715582922127" duration="2000" />
+      <workItem from="1715582922127" duration="150256000" />
+      <workItem from="1716511726535" duration="1802000" />
     </task>
+    <task id="LOCAL-00001" summary="톰캣 스프링으로 띄우기 ( 스프링 기초설정 )">
+      <option name="closed" value="true" />
+      <created>1715657208256</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715657208256</updated>
+    </task>
+    <task id="LOCAL-00002" summary="spring으로 변경 1 (서블릿최소화)">
+      <option name="closed" value="true" />
+      <created>1715666761572</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715666761572</updated>
+    </task>
+    <task id="LOCAL-00003" summary="spring으로 변경 2 (리팩토링)">
+      <option name="closed" value="true" />
+      <created>1715669516046</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715669516046</updated>
+    </task>
+    <task id="LOCAL-00004" summary="spring으로 변경 3 스프링 거의 다 만듬">
+      <option name="closed" value="true" />
+      <created>1715674108119</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715674108119</updated>
+    </task>
+    <task id="LOCAL-00005" summary="spring으로 변경 3 스프링 거의 다 만듬">
+      <option name="closed" value="true" />
+      <created>1715745927604</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715745927605</updated>
+    </task>
+    <task id="LOCAL-00006" summary="spring mvc 요청 처리 1">
+      <option name="closed" value="true" />
+      <created>1715824666643</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715824666643</updated>
+    </task>
+    <task id="LOCAL-00007" summary="spring mvc 요청 처리 연습">
+      <option name="closed" value="true" />
+      <created>1715829888222</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715829888222</updated>
+    </task>
+    <task id="LOCAL-00008" summary="spring mvc 성적 관리앱">
+      <option name="closed" value="true" />
+      <created>1715841452922</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715841452922</updated>
+    </task>
+    <task id="LOCAL-00009" summary="spring mvc 성적 관리앱 2">
+      <option name="closed" value="true" />
+      <created>1715845497588</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715845497588</updated>
+    </task>
+    <task id="LOCAL-00010" summary="spring 컨테이너, injection">
+      <option name="closed" value="true" />
+      <created>1715907592758</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715907592758</updated>
+    </task>
+    <task id="LOCAL-00011" summary="lombok 사용">
+      <option name="closed" value="true" />
+      <created>1715909601492</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715909601492</updated>
+    </task>
+    <task id="LOCAL-00012" summary="springJdbc">
+      <option name="closed" value="true" />
+      <created>1715917624089</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715917624089</updated>
+    </task>
+    <task id="LOCAL-00013" summary="springJdbc 2">
+      <option name="closed" value="true" />
+      <created>1715923949436</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715923949436</updated>
+    </task>
+    <task id="LOCAL-00014" summary="springJdbc 연습하기 삭제기능까지">
+      <option name="closed" value="true" />
+      <created>1715935019333</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715935019333</updated>
+    </task>
+    <task id="LOCAL-00015" summary="springJdbc dto 사용">
+      <option name="closed" value="true" />
+      <created>1716166783293</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716166783293</updated>
+    </task>
+    <task id="LOCAL-00016" summary="springJdbc detail 추가">
+      <option name="closed" value="true" />
+      <created>1716173009436</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716173009437</updated>
+    </task>
+    <task id="LOCAL-00017" summary="springJdbc 조회수 업데이트">
+      <option name="closed" value="true" />
+      <created>1716173404161</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716173404161</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Score 수정기능 추가">
+      <option name="closed" value="true" />
+      <created>1716185241526</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716185241526</updated>
+    </task>
+    <task id="LOCAL-00019" summary="mybatis 초기설정">
+      <option name="closed" value="true" />
+      <created>1716253747558</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716253747558</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Score , Board - mybatis 적용">
+      <option name="closed" value="true" />
+      <created>1716271929362</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716271929362</updated>
+    </task>
+    <task id="LOCAL-00021" summary="mybatis 응용">
+      <option name="closed" value="true" />
+      <created>1716274397609</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1716274397609</updated>
+    </task>
+    <task id="LOCAL-00022" summary="페이징 기초">
+      <option name="closed" value="true" />
+      <created>1716339043303</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1716339043303</updated>
+    </task>
+    <task id="LOCAL-00023" summary="페이징 렌더링 알고리즘 1">
+      <option name="closed" value="true" />
+      <created>1716342980552</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1716342980552</updated>
+    </task>
+    <task id="LOCAL-00024" summary="페이징 렌더링 알고리즘 2 - 마지막 구간 끝페이지 보정">
+      <option name="closed" value="true" />
+      <created>1716344741520</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1716344741520</updated>
+    </task>
+    <task id="LOCAL-00025" summary="페이징 렌더링 알고리즘 3 - 맨처음, 맨끝 이동 , 페이지 액티브 활성화">
+      <option name="closed" value="true" />
+      <created>1716349470100</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1716349470100</updated>
+    </task>
+    <task id="LOCAL-00026" summary="검색 처리 1">
+      <option name="closed" value="true" />
+      <created>1716355994646</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1716355994646</updated>
+    </task>
+    <task id="LOCAL-00027" summary="검색 처리 2">
+      <option name="closed" value="true" />
+      <created>1716357287352</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1716357287352</updated>
+    </task>
+    <task id="LOCAL-00028" summary="검색 처리 2 - 클라이언트 처리">
+      <option name="closed" value="true" />
+      <created>1716425971751</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1716425971751</updated>
+    </task>
+    <task id="LOCAL-00029" summary="검색 처리 3 - 디테일 처리">
+      <option name="closed" value="true" />
+      <created>1716427761354</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1716427761354</updated>
+    </task>
+    <task id="LOCAL-00030" summary="검색 처리 마무리">
+      <option name="closed" value="true" />
+      <created>1716427805272</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1716427805272</updated>
+    </task>
+    <task id="LOCAL-00031" summary="댓글 - 게시물 댓글 수 체크">
+      <option name="closed" value="true" />
+      <created>1716433365591</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1716433365591</updated>
+    </task>
+    <task id="LOCAL-00032" summary="댓글 - mapper test">
+      <option name="closed" value="true" />
+      <created>1716435703753</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1716435703753</updated>
+    </task>
+    <task id="LOCAL-00033" summary="REST API 기초">
+      <option name="closed" value="true" />
+      <created>1716512352493</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1716512352493</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="spring mvc 성적 관리앱 2" />
+    <MESSAGE value="spring 컨테이너, injection" />
+    <MESSAGE value="lombok 사용" />
+    <MESSAGE value="springJdbc" />
+    <MESSAGE value="springJdbc 2" />
+    <MESSAGE value="springJdbc 연습하기 삭제기능까지" />
+    <MESSAGE value="springJdbc dto 사용" />
+    <MESSAGE value="springJdbc detail 추가" />
+    <MESSAGE value="springJdbc 조회수 업데이트" />
+    <MESSAGE value="Score 수정기능 추가" />
+    <MESSAGE value="mybatis 초기설정" />
+    <MESSAGE value="Score , Board - mybatis 적용" />
+    <MESSAGE value="mybatis 응용" />
+    <MESSAGE value="페이징 기초" />
+    <MESSAGE value="페이징 렌더링 알고리즘 1" />
+    <MESSAGE value="페이징 렌더링 알고리즘 2 - 마지막 구간 끝페이지 보정" />
+    <MESSAGE value="페이징 렌더링 알고리즘 3 - 맨처음, 맨끝 이동 , 페이지 액티브 활성화" />
+    <MESSAGE value="검색 처리 1" />
+    <MESSAGE value="검색 처리 2" />
+    <MESSAGE value="검색 처리 2 - 클라이언트 처리" />
+    <MESSAGE value="검색 처리 3 - 디테일 처리" />
+    <MESSAGE value="검색 처리 마무리" />
+    <MESSAGE value="댓글 - 게시물 댓글 수 체크" />
+    <MESSAGE value="댓글 - mapper test" />
+    <MESSAGE value="REST API 기초" />
+    <option name="LAST_COMMIT_MESSAGE" value="REST API 기초" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/study/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="javax.el.PropertyNotFoundException" package="javax.el" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
