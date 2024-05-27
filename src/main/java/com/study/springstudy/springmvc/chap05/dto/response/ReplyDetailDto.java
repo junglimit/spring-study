@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Builder
 public class ReplyDetailDto {
-
+    @JsonFormat
     private long rno;
     private String text;
     private String writer;
