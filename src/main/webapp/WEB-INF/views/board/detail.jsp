@@ -248,7 +248,7 @@
 </div>
 
 
-<script src="/assets/js/reply.js"></script>
+<script type="module" src="/assets/js/reply.js"></script>
 
 
 </body>
