@@ -1,5 +1,6 @@
 import { fetchReplies, replyPageClickEvent } from "./getReply.js";
 import { fetchReplyPost } from "./postReply.js";
+import {deleteReply} from "./deleteReply.js";
 
 // ====== 전역 변수 ========
 export const BASE_URL = 'http://localhost:8383/api/v1/replies';
@@ -17,3 +18,6 @@ document.getElementById('replyAddBtn').addEventListener('click',e=>{
 
 // 댓글 페이지 클릭이벤트 등록
 replyPageClickEvent();
+
+// 댓글 삭제 함수
+deleteReply();

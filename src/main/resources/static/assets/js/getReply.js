@@ -72,7 +72,7 @@ export function renderReplies({pageInfo, replies}) {
     // 댓글 목록 렌더링
     let tag = '';
     if (replies && replies.length > 0) {
-        replies.forEach(({ reply_no: rno, writer, text, createAt }) => {
+        replies.forEach(({ rno, writer, text, createAt }) => {
             tag += `
         <div id='replyContent' class='card-body' data-reply-id='${rno}'>
             <div class='row user-block'>
@@ -118,18 +118,14 @@ export async function fetchReplies(pageNo=1) {
 
 // 페이지 클릭 이벤트 생성 함수
 export function replyPageClickEvent() {
-    const $next = document.querySelector('.next');
-    const $prev = document.querySelector('.prev');
+    // const $next = document.querySelector('.next');
+    // const $prev = document.querySelector('.prev');
     document.querySelector('.pagination').addEventListener('click', (e) => {
         e.preventDefault();
         console.log(e.target);
         // console.log(e.target.getAttribute('href'));
         fetchReplies(e.target.getAttribute('href'));
-        // if(e.target.matches('$next')) {
-        //     fetchReplies(e.target.getAttribute('href'+1));
-        // } else if (e.target.matches('$prev')) {
-        //     fetchReplies(e.target.getAttribute('href'-1));
-        // }
+
 
     })
 }
