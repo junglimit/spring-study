@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0f5a1f4-4c11-4da5-8c7e-581bc75ef0ac" name="변경" comment="댓글 추가 JSON">
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    <list default="true" id="d0f5a1f4-4c11-4da5-8c7e-581bc75ef0ac" name="변경" comment="댓글 페이징 처리">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/dto/response/ReplyListDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/api/ReplyApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/api/ReplyApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/dto/request/ReplyPostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/dto/request/ReplyPostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/service/ReplyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/service/ReplyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/getReply.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/getReply.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/reply.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/reply.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +55,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "junglimit"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;junglimit&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -118,6 +120,7 @@
     "Gradle.springstudy 빌드.executor": "Run",
     "HTTP 요청.generated-requests | #1.executor": "Run",
     "HTTP 요청.generated-requests | #2.executor": "Run",
+    "HTTP 요청.generated-requests | #3.executor": "Run",
     "HTTP 요청.generated-requests 내 전체.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -206,30 +209,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ReplyMapperTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.study.springstudy.springmvc.chap05.ReplyMapperTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="ReplyMapperTest.findAllTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -260,6 +239,9 @@
     <configuration name="generated-requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" requestIdentifier="#2" runType="단일 요청 실행">
       <method v="2" />
     </configuration>
+    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="단일 요청 실행">
+      <method v="2" />
+    </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="springstudy.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.springstudy.Main" />
@@ -269,11 +251,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP 요청.generated-requests | #2" />
         <item itemvalue="HTTP 요청.generated-requests | #1" />
+        <item itemvalue="HTTP 요청.generated-requests | #3" />
+        <item itemvalue="HTTP 요청.generated-requests | #2" />
         <item itemvalue="Gradle.LogExampleTest.logTest" />
         <item itemvalue="Gradle.ReplyMapperTest.findAllTest" />
-        <item itemvalue="Gradle.ReplyMapperTest" />
       </list>
     </recent_temporary>
   </component>
@@ -295,6 +277,7 @@
       <workItem from="1715582922127" duration="150256000" />
       <workItem from="1716511726535" duration="1802000" />
       <workItem from="1716513612687" duration="14102000" />
+      <workItem from="1716769811960" duration="21358000" />
     </task>
     <task id="LOCAL-00001" summary="톰캣 스프링으로 띄우기 ( 스프링 기초설정 )">
       <option name="closed" value="true" />
@@ -584,18 +567,53 @@
       <option name="project" value="LOCAL" />
       <updated>1716712417780</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="댓글 입력값 검증">
+      <option name="closed" value="true" />
+      <created>1716771219817</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1716771219817</updated>
+    </task>
+    <task id="LOCAL-00038" summary="댓글 삭제처리">
+      <option name="closed" value="true" />
+      <created>1716773330610</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1716773330610</updated>
+    </task>
+    <task id="LOCAL-00039" summary="CORS 정책 허용범위 설정">
+      <option name="closed" value="true" />
+      <created>1716780420394</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1716780420394</updated>
+    </task>
+    <task id="LOCAL-00040" summary="비동기 댓글추가">
+      <option name="closed" value="true" />
+      <created>1716865896369</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1716865896369</updated>
+    </task>
+    <task id="LOCAL-00041" summary="댓글 페이징 처리">
+      <option name="closed" value="true" />
+      <created>1716873767461</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1716873767461</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="springJdbc" />
-    <MESSAGE value="springJdbc 2" />
-    <MESSAGE value="springJdbc 연습하기 삭제기능까지" />
-    <MESSAGE value="springJdbc dto 사용" />
-    <MESSAGE value="springJdbc detail 추가" />
     <MESSAGE value="springJdbc 조회수 업데이트" />
     <MESSAGE value="Score 수정기능 추가" />
     <MESSAGE value="mybatis 초기설정" />
@@ -616,7 +634,12 @@
     <MESSAGE value="REST API 기초 2 - dto 활용" />
     <MESSAGE value="Logging" />
     <MESSAGE value="댓글 추가 JSON" />
-    <option name="LAST_COMMIT_MESSAGE" value="댓글 추가 JSON" />
+    <MESSAGE value="댓글 입력값 검증" />
+    <MESSAGE value="댓글 삭제처리" />
+    <MESSAGE value="CORS 정책 허용범위 설정" />
+    <MESSAGE value="비동기 댓글추가" />
+    <MESSAGE value="댓글 페이징 처리" />
+    <option name="LAST_COMMIT_MESSAGE" value="댓글 페이징 처리" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
