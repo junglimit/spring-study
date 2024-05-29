@@ -127,6 +127,9 @@ export function replyPageClickEvent() {
 let currentPage = 1; // 현재 무한스크롤시 진행되고 있는 페이지 번호
 let isFetching = false; // 데이터를 불러오는 중에는 더 가져오지 않게 제어하기 위한 논리변수
 
+let totalReplies = 0; // 총 댓글 수
+let loadedReplies = 0; // 로딩된 댓글 수
+
 function appendReplies({ replies }) {
 
 
@@ -160,6 +163,9 @@ function appendReplies({ replies }) {
 
     document.getElementById('replyData').innerHTML += tag;
 
+    // 로드된 댓글 수 업데이트
+    loadedReplies += replies.length;
+
 }
 
 
@@ -175,8 +181,11 @@ export async function fetchInfScrollReplies(pageNo=1) {
     const replyResponse = await res.json();
 
     if(pageNo === 1){
+        // 총 댓글 수 전역변수 값 세팅
+        totalReplies = replyResponse.pageInfo.totalCount;
+        loadedReplies = 0; // 댓글 입력, 삭제시 다시 1페이지 로딩할때 초기값으로 만들기
         // 댓글 수 렌더링
-        document.getElementById('replyCnt').textContent = replyResponse.pageInfo.totalCount;
+        document.getElementById('replyCnt').textContent = totalReplies;
         // 초기 댓글 리셋
         document.getElementById('replyData').innerHTML = '';
     }
@@ -186,6 +195,12 @@ export async function fetchInfScrollReplies(pageNo=1) {
     appendReplies(replyResponse);
     currentPage = pageNo;
     isFetching = false;
+
+
+    // 댓글을 전부 가져올 시 스크롤 이벤트 제거하기
+    if(loadedReplies >= totalReplies){
+        window.removeEventListener('scroll', scrollHandler);
+    }
 }
 
 // 스크롤 이벤트 핸들러 함수
