@@ -1,6 +1,7 @@
 package com.study.springstudy.springmvc.chap05.api;
 
 import com.study.springstudy.springmvc.chap04.common.Page;
+import com.study.springstudy.springmvc.chap05.dto.request.ReplyModifyDto;
 import com.study.springstudy.springmvc.chap05.dto.request.ReplyPostDto;
 import com.study.springstudy.springmvc.chap05.dto.response.ReplyDetailDto;
 import com.study.springstudy.springmvc.chap05.dto.response.ReplyListDto;
@@ -41,7 +42,7 @@ public class ReplyApiController {
 
         log.info("/api/v1/replies/{} : GET ",bno);
 
-        ReplyListDto replies = replyService.getReplies(bno, new Page(pageNo, 5));
+        ReplyListDto replies = replyService.getReplies(bno, new Page(pageNo, 10));
 
 //        log.debug("first reply : {}", replies.get(0));
 
@@ -107,5 +108,27 @@ public class ReplyApiController {
                 .body(dtoList);
     }
 
+    // 댓글 수정 요청
+//    @PutMapping // 전체수정
+//    @PatchMapping // 일부수정
 
-}
+    // PUT,PATCH 둘다 받기
+    @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH})
+    public ResponseEntity<?> modify(@Validated @RequestBody ReplyModifyDto dto, BindingResult result) {
+        log.info("/api/v1/replies : POST");
+        log.debug("parameter : {}", dto);
+
+        if (result.hasErrors()) {
+
+            Map<String, String> errors = makeValidationMessageMap(result);
+
+            return ResponseEntity
+                    .badRequest()
+                    .body(errors);
+        }
+        ReplyListDto replyListDto = replyService.modify(dto);
+
+        return ResponseEntity.ok().body(replyListDto);
+    }
+
+    }
