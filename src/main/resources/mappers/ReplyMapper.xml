@@ -26,7 +26,7 @@
     <select id="findAll" resultType="reply">
         SELECT * FROM tbl_reply
         WHERE board_no = #{bno}
-        ORDER BY reply_no
+        ORDER BY reply_no DESC
         LIMIT #{p.pageStart}, #{p.amount}
     </select>
 

@@ -223,7 +223,7 @@
   </div> <!-- end replies row -->
 
   <!-- 댓글 수정 모달 -->
-  <div class="modal fade bd-example-modal-lg" id="replyModifyModal">
+  <div class="modal fade bd-example-modal-lg" id="replyModifyModal" >
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
