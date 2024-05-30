@@ -14,8 +14,9 @@ public class SecurityConfig {
     @Bean // @Component 시리즈 (@Controller , @Service, @Repository, @Mapper), 내가 만든 메서드가 아닐때 스프링이 알아서 주입해줌
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        http.csrf().disable() // csrf 토큰공격 방지 기능 off
         // 모든 요청에 대해 인증하지 않겠다.
-        http.authorizeRequests().antMatchers("/**").permitAll();
+                .authorizeRequests().antMatchers("/**").permitAll();
 
         return http.build();
     }

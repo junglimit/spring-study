@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter @ToString
+@Setter // json 에서는 setter 필요없음 (비동기)
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
