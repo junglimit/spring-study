@@ -2,6 +2,7 @@ package com.study.springstudy.springmvc.chap05.mapper;
 
 import com.study.springstudy.springmvc.chap05.entity.Member;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface MemberMapper {
@@ -17,5 +18,6 @@ public interface MemberMapper {
      * @param keyword - 중복 검사할 실제값
      * @return - 중복이면 true
      */
-    boolean existsById(String type, String keyword);
+    boolean existsById(@Param("type") String type,
+                       @Param("keyword") String keyword);
 }

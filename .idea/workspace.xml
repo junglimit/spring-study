@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0f5a1f4-4c11-4da5-8c7e-581bc75ef0ac" name="변경" comment="댓글 수정기능 구현 완료">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/entity/Auth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/entity/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/mapper/MemberMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/MemberMapper.xml" afterDir="false" />
+    <list default="true" id="d0f5a1f4-4c11-4da5-8c7e-581bc75ef0ac" name="변경" comment="회원관리 시스템">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/dto/request/SignUpDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/service/MemberService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/study/springstudy/springmvc/chap05/mapper/MemberMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/mapper/MemberMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/MemberMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/springstudy/chap05/ReplyMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/study/springstudy/chap05/ReplyMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +48,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="jsp template" />
-        <option value="JUnit5 Test Class" />
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -97,6 +99,9 @@
     &quot;Gradle.HotelTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.HotelTest.hotelTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.LogExampleTest.logTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MemberMapperTest.existsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MemberMapperTest.findOneTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MemberMapperTest.saveTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.PersonMapperTest.delTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.PersonMapperTest.findAllTest.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.PersonMapperTest.findNameTest.executor&quot;: &quot;Run&quot;,
@@ -177,11 +182,11 @@
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.study.springstudy.springmvc.chap05.mapper" />
       <recent name="com.study.springstudy.springmvc" />
       <recent name="com.study.springstudy.chap05" />
       <recent name="com.study.springstudy.springmvc.chap04.mapper" />
       <recent name="com.study.springstudy.springmvc.chap03.mapper" />
-      <recent name="com.study.springstudy.database.chap02" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.study.springstudy.webservlet.chap02.v3.controller" />
@@ -189,7 +194,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Main">
-    <configuration name="LogExampleTest.logTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MemberMapperTest.existsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -202,7 +207,55 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.study.springstudy.springmvc.LogExampleTest.logTest&quot;" />
+            <option value="&quot;com.study.springstudy.springmvc.chap05.mapper.MemberMapperTest.existsTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MemberMapperTest.findOneTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.study.springstudy.springmvc.chap05.mapper.MemberMapperTest.findOneTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MemberMapperTest.saveTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.study.springstudy.springmvc.chap05.mapper.MemberMapperTest.saveTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -214,12 +267,6 @@
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="단일 요청 실행">
-      <method v="2" />
-    </configuration>
-    <configuration name="generated-requests | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" requestIdentifier="#2" runType="단일 요청 실행">
-      <method v="2" />
-    </configuration>
-    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="단일 요청 실행">
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="단일 요청 실행">
@@ -234,11 +281,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MemberMapperTest.existsTest" />
+        <item itemvalue="Gradle.MemberMapperTest.findOneTest" />
+        <item itemvalue="Gradle.MemberMapperTest.saveTest" />
         <item itemvalue="HTTP 요청.generated-requests | #4" />
         <item itemvalue="HTTP 요청.generated-requests | #1" />
-        <item itemvalue="HTTP 요청.generated-requests | #3" />
-        <item itemvalue="HTTP 요청.generated-requests | #2" />
-        <item itemvalue="Gradle.LogExampleTest.logTest" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +311,8 @@
       <workItem from="1716877522894" duration="18511000" />
       <workItem from="1716952502665" duration="1346000" />
       <workItem from="1716953860527" duration="99000" />
-      <workItem from="1716953975618" duration="4620000" />
+      <workItem from="1716953975618" duration="8713000" />
+      <workItem from="1716966701668" duration="7182000" />
     </task>
     <task id="LOCAL-00001" summary="톰캣 스프링으로 띄우기 ( 스프링 기초설정 )">
       <option name="closed" value="true" />
@@ -650,14 +698,21 @@
       <option name="project" value="LOCAL" />
       <updated>1716960346031</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="회원관리 시스템">
+      <option name="closed" value="true" />
+      <created>1716962089429</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1716962089430</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="페이징 렌더링 알고리즘 2 - 마지막 구간 끝페이지 보정" />
     <MESSAGE value="페이징 렌더링 알고리즘 3 - 맨처음, 맨끝 이동 , 페이지 액티브 활성화" />
     <MESSAGE value="검색 처리 1" />
     <MESSAGE value="검색 처리 2" />
@@ -682,7 +737,8 @@
     <MESSAGE value="댓글 무한스크롤 완성" />
     <MESSAGE value="댓글 수정 백엔드 완료" />
     <MESSAGE value="댓글 수정기능 구현 완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="댓글 수정기능 구현 완료" />
+    <MESSAGE value="회원관리 시스템" />
+    <option name="LAST_COMMIT_MESSAGE" value="회원관리 시스템" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

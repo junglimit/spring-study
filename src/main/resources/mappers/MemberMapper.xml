@@ -27,13 +27,15 @@
 
     <select id="existsById" resultType="boolean">
         SELECT COUNT(*)
-        FRO tbl_member
-        <if test="type == 'account'">
-            WHERE account = #{keyword}
-        </if>
-        <if test="type == 'email'">
-            WHERE account = #{keyword}
-        </if>
+        FROM tbl_member
+        <where>
+            <if test="type == 'account'">
+                account = #{keyword}
+            </if>
+            <if test="type == 'email'">
+                email = #{keyword}
+            </if>
+        </where>
 
     </select>
 
