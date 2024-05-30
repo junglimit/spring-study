@@ -1,6 +1,7 @@
 
 // 유효성 검증 함수들을 import
 import { validateInput } from './validate.js';
+import {debounce} from "./utill.js";
 
 // 폼과 회원가입 버튼 요소를 가져옴
 const form = document.getElementById('signUpForm');
@@ -31,7 +32,7 @@ const updateButtonState = () => {
 // 각 필드에 대해 입력값 검증 이벤트 리스너를 추가
 fields.forEach(field => {
     const $input = document.getElementById(field.id); // 입력 요소 가져오기
-    $input.addEventListener('keyup', async (e) => { // 키보드 입력 시마다 유효성 검증
+    $input.addEventListener('keyup', debounce(async (e) => { // 키보드 입력 시마다 유효성 검증
         const isValid = await field.validator($input.value); // 유효성 검증 함수 호출
         const $errorSpan = document.getElementById(field.errorElement); // 에러 메시지 표시 요소 가져오기
         console.log(isValid);
@@ -45,7 +46,7 @@ fields.forEach(field => {
             field.valid = false; // 필드의 유효 상태를 false로 설정
         }
         updateButtonState(); // 각 입력 유효성 검사 후 버튼 상태 업데이트
-    });
+    },500));
 });
 
 // 회원가입 버튼 클릭 이벤트 리스너 추가
