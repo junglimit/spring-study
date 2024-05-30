@@ -1,4 +1,3 @@
-
 // 회원가입 입력 검증 처리
 
 // 계정 입력 검증
@@ -12,6 +11,16 @@ async function fetchDuplicateCheck(idValue) {
     const flag = await res.json();
 
     idFlag = flag;
+}
+
+// 비밀번호 확인 비동기 요청 보내기
+let pwFlag = false;
+
+async function checkPassword(passwordValue) {
+    const $passwordCheck = document.getElementById('password_check').value;
+
+    // 비밀번호가 확인란과 일치하는지 확인
+    pwFlag = passwordValue === $passwordCheck;
 }
 
 $idInput.addEventListener('keyup', async (e) => {
@@ -47,6 +56,57 @@ $idInput.addEventListener('keyup', async (e) => {
     }
 
 });
+const $passwordInput = document.getElementById('password');
+
+
+$passwordInput.addEventListener('keyup', async (e) => {
+    const passwordPattern = /([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/;
+
+    const passwordValue = $passwordInput.value;
+    // console.log(passwordValue);
+
+    const $passwordChk = document.getElementById('pwChk');
+    if (passwordValue.trim() === '') {
+        $passwordInput.style.borderColor = 'red';
+        $passwordChk.innerHTML = '<b class="warning">[비밀번호는 필수값입니다.]</b>';
+    } else if (!passwordPattern.test(passwordValue)) {
+        $passwordInput.style.borderColor = 'red';
+        $passwordChk.innerHTML = '<b class="warning">[비밀번호는 영문과 특수문자를 포함한 최소 8자로 입력하세요.]</b>';
+    } else {
+        $passwordChk.innerHTML = '';
+        checkPassword(passwordValue);
+
+    }
+
+
+})
+const $passwordCheck = document.getElementById('password_check');
+
+$passwordCheck.addEventListener('keyup', async (e) => {
+    const passwordValue = $passwordInput.value;
+    await checkPassword(passwordValue);
+
+const $passwordChk2 = document.getElementById('pwChk2');
+if (pwFlag) {
+    $passwordInput.style.borderColor = 'skyblue';
+    $passwordChk2.innerHTML = '<b class="success">[사용가능한 비밀번호입니다.]</b>'
+} else {
+    $passwordInput.style.borderColor = 'red';
+    $passwordChk2.innerHTML = '<b class="warning">[비밀번호가 일치해야합니다.]</b>';
+}
+})
+
+// 비밀번호 재확인
+// await checkPassword(passwordValue);
+//
+// const $passwordChk2 = document.getElementById('pwChk2');
+// if (pwFlag) {
+//     $passwordInput.style.borderColor = 'skyblue';
+//     $passwordChk2.innerHTML = '<b class="success">[사용가능한 비밀번호입니다.]</b>'
+// } else {
+//     $passwordInput.style.borderColor = 'red';
+//     $passwordChk2.innerHTML = '<b class="warning">[비밀번호가 일치해야합니다.]</b>';
+// }
 
 
 // 패스워드 검사 정규표현식
