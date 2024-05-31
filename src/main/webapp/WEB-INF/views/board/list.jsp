@@ -5,13 +5,12 @@
 
 <head>
 
-    <%@include file="../include/static-head.jsp" %>
-
+    <%@ include file="../include/static-head.jsp" %>
 
     <link rel="stylesheet" href="/assets/css/list.css">
 
     <style>
-        .card-container .card .card-title-wrapper .time-view-wrapper > div.hit {
+        .card-container .card .card-title-wrapper .time-view-wrapper>div.hit {
             background: yellow;
         }
     </style>
@@ -20,7 +19,7 @@
 
 <body>
 
-<%@include file="../include/header.jsp" %>
+<%@ include file="../include/header.jsp" %>
 
 <div id="wrap">
 
@@ -67,13 +66,12 @@
             </div>
         </c:if>
 
-
         <c:if test="${bList.size() > 0}">
             <c:forEach var="b" items="${bList}">
                 <div class="card-wrapper">
                     <section class="card" data-bno="${b.bno}">
                         <div class="card-title-wrapper">
-                            <h2 class="card-title">${b.shortTitle} [${b.replyCount}]</h2>
+                            <h2 class="card-title">${b.shortTitle} [${b.replyCount}] </h2>
                             <div class="time-view-wrapper">
                                 <div class="time">
                                     <i class="far fa-clock"></i>
@@ -99,7 +97,7 @@
                         </div>
                     </section>
 
-                        <%--  관리자이거나 본인이 쓴글에만 렌더링되도록  --%>
+                    <!-- 관리자이거나 본인이 쓴글에만 렌더링되도록 -->
                     <c:if test="${login.auth == 'ADMIN' || login.account == b.account}">
                         <div class="card-btn-group">
                             <button class="del-btn" data-href="/board/delete?bno=${b.bno}">
@@ -107,6 +105,7 @@
                             </button>
                         </div>
                     </c:if>
+
                 </div>
                 <!-- end div.card-wrapper -->
             </c:forEach>
@@ -125,8 +124,7 @@
 
                 <c:if test="${maker.pageInfo.pageNo != 1}">
                     <li class="page-item">
-                        <a class="page-link"
-                           href="/board/list?pageNo=1&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a>
+                        <a class="page-link" href="/board/list?pageNo=1&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a>
                     </li>
                 </c:if>
 
@@ -177,6 +175,7 @@
         </div>
     </div>
 </div>
+
 
 
 <script>
@@ -241,9 +240,13 @@
         const $targetCard = e.target.closest('.card');
         $targetCard?.classList.remove('card-hover');
 
+
         const $delBtn = e.target.closest('.card-wrapper')?.querySelector('.del-btn');
-        $delBtn.style.opacity = '0';
+        if($delBtn != null) {
+            $delBtn.style.opacity = '0';
+        }
     }
+
 
 
     $cardContainer.onmouseover = e => {
@@ -253,8 +256,13 @@
         const $targetCard = e.target.closest('.card');
         $targetCard?.classList.add('card-hover');
 
+
         const $delBtn = e.target.closest('.card-wrapper')?.querySelector('.del-btn');
+        if($delBtn != null){
+
         $delBtn.style.opacity = '1';
+        }
+
     }
 
     $cardContainer.onmousedown = e => {
@@ -288,7 +296,7 @@
 
         // 3. 해당 li태그에 class = active를 추가한다.
         $li?.classList.add('active');
-        // js null 체크 방법 : if 말고 확인할 곳 뒤에 물음표만 붙이면 됨
+
     }
 
     // 기존 검색 조건 option태그 고정하기
@@ -304,10 +312,10 @@
         // 3. 해당 태그에 selected 속성 부여
         $option?.setAttribute('selected', 'selected');
     }
-
-
     appendActivePage();
     fixSearchOption();
+
+
 
 
 </script>

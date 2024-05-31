@@ -31,7 +31,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 // 제외할 URL
                 .excludePathPatterns("/board/list", "/board/detail")
                 ;
+
     }
+
 
 
 }
