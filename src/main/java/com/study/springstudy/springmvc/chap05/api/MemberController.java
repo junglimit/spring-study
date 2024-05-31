@@ -3,8 +3,10 @@ package com.study.springstudy.springmvc.chap05.api;
 
 import com.study.springstudy.springmvc.chap05.dto.request.LoginDto;
 import com.study.springstudy.springmvc.chap05.dto.request.SignUpDto;
+import com.study.springstudy.springmvc.chap05.dto.response.LoginUserInfoDto;
 import com.study.springstudy.springmvc.chap05.service.LoginResult;
 import com.study.springstudy.springmvc.chap05.service.MemberService;
+import com.study.springstudy.springmvc.util.LoginUtil;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -58,8 +60,18 @@ public class MemberController {
 
     // 로그인 양식 열기
     @GetMapping("/sign-in")
-    public void signIn() {
+    public String signIn(HttpSession session) {
+
+
+        // 로그인을 한 사람이 요청시 돌려보냄
+//        if (LoginUtil.isLoggedIn(session)) {
+//            return "redirect:/";
+//        }
+
         log.info("/members/sign-in GET : forwarding to sign-in.jsp");
+        return "members/sign-in";
+
+
     }
 
     // 로그인 요청 처리
@@ -85,6 +97,21 @@ public class MemberController {
 
         }
         return "redirect:/members/sign-in"; // 로그인 실패시
+    }
+
+    @GetMapping("/sign-out")
+    public String signOut(HttpSession session) {
+        // 세션 구하기
+//        HttpSession session = request.getSession(); -> HttpSession 으로 한번에 구할 수 있음
+
+        // 세션에서 로그인 기록 삭제
+        session.removeAttribute("login");
+
+        // 세션 리셋
+        session.invalidate();
+
+        // 홈으로 보내기
+        return "redirect:/";
     }
 
 
