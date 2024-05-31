@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/members")
 @Slf4j
@@ -61,12 +64,16 @@ public class MemberController {
 
     // 로그인 요청 처리
     @PostMapping("sign-in")
-    //                                  redirect 할때 모델대신 쓰는 놈
-    public String signIn(LoginDto dto , RedirectAttributes ra) {
+    //
+    public String signIn(LoginDto dto ,RedirectAttributes ra ,  HttpServletRequest request) {
         log.info("/members/sign-in POST");
         log.debug("parameter: {}", dto);
 
-        LoginResult result = memberService.authenticate(dto);
+        // 세션 얻기
+        HttpSession session = request.getSession();
+
+
+        LoginResult result = memberService.authenticate(dto, session);
 
         // 로그인 검증 결과를 JSP 에게 보내기
         // redirect 를 사용하면 Model 객페를 사용할 수 없다.
