@@ -6,12 +6,12 @@
 <head>
 
     <%@include file="../include/static-head.jsp" %>
-    
-    
+
+
     <link rel="stylesheet" href="/assets/css/list.css">
 
     <style>
-        .card-container .card .card-title-wrapper .time-view-wrapper>div.hit {
+        .card-container .card .card-title-wrapper .time-view-wrapper > div.hit {
             background: yellow;
         }
     </style>
@@ -20,7 +20,7 @@
 
 <body>
 
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/header.jsp" %>
 
 <div id="wrap">
 
@@ -36,7 +36,7 @@
             <form action="/board/list" method="get">
 
                 <select class="form-select" name="type" id="search-type">
-                    <option value="title" >제목</option>
+                    <option value="title">제목</option>
                     <option value="content">내용</option>
                     <option value="writer">작성자</option>
                     <option value="tc">제목+내용</option>
@@ -69,43 +69,47 @@
 
 
         <c:if test="${bList.size() > 0}">
-        <c:forEach var="b" items="${bList}">
-            <div class="card-wrapper">
-                <section class="card" data-bno="${b.bno}">
-                    <div class="card-title-wrapper">
-                        <h2 class="card-title">${b.shortTitle} [${b.replyCount}]</h2>
-                        <div class="time-view-wrapper">
-                            <div class="time">
-                                <i class="far fa-clock"></i>
-                                    ${b.date}
-                            </div>
+            <c:forEach var="b" items="${bList}">
+                <div class="card-wrapper">
+                    <section class="card" data-bno="${b.bno}">
+                        <div class="card-title-wrapper">
+                            <h2 class="card-title">${b.shortTitle} [${b.replyCount}]</h2>
+                            <div class="time-view-wrapper">
+                                <div class="time">
+                                    <i class="far fa-clock"></i>
+                                        ${b.date}
+                                </div>
 
-                            <c:if test="${b.hit}">
-                                <div class="hit">HIT</div>
-                            </c:if>
+                                <c:if test="${b.hit}">
+                                    <div class="hit">HIT</div>
+                                </c:if>
 
-                            <c:if test="${b.newArticle}">
-                                <div class="hit">NEW</div>
-                            </c:if>
+                                <c:if test="${b.newArticle}">
+                                    <div class="hit">NEW</div>
+                                </c:if>
 
-                            <div class="view">
-                                <i class="fas fa-eye"></i>
-                                <span class="view-count">${b.view}</span>
+                                <div class="view">
+                                    <i class="fas fa-eye"></i>
+                                    <span class="view-count">${b.view}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-content">
-                            ${b.shortContent}
-                    </div>
-                </section>
-                <div class="card-btn-group">
-                    <button class="del-btn" data-href="/board/delete?bno=${b.bno}">
-                        <i class="fas fa-times"></i>
-                    </button>
+                        <div class="card-content">
+                                ${b.shortContent}
+                        </div>
+                    </section>
+
+                        <%--  관리자이거나 본인이 쓴글에만 렌더링되도록  --%>
+                    <c:if test="${login.auth == 'ADMIN' || login.account == b.account}">
+                        <div class="card-btn-group">
+                            <button class="del-btn" data-href="/board/delete?bno=${b.bno}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </c:if>
                 </div>
-            </div>
-            <!-- end div.card-wrapper -->
-        </c:forEach>
+                <!-- end div.card-wrapper -->
+            </c:forEach>
         </c:if>
 
 
@@ -121,13 +125,15 @@
 
                 <c:if test="${maker.pageInfo.pageNo != 1}">
                     <li class="page-item">
-                        <a class="page-link" href="/board/list?pageNo=1&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a>
+                        <a class="page-link"
+                           href="/board/list?pageNo=1&type=${s.type}&keyword=${s.keyword}">&lt;&lt;</a>
                     </li>
                 </c:if>
 
                 <c:if test="${maker.prev}">
                     <li class="page-item">
-                        <a class="page-link" href="/board/list?pageNo=${maker.begin - 1}&type=${s.type}&keyword=${s.keyword}">prev</a>
+                        <a class="page-link"
+                           href="/board/list?pageNo=${maker.begin - 1}&type=${s.type}&keyword=${s.keyword}">prev</a>
                     </li>
                 </c:if>
 
@@ -139,13 +145,15 @@
 
                 <c:if test="${maker.next}">
                     <li class="page-item">
-                        <a class="page-link" href="/board/list?pageNo=${maker.end + 1}&type=${s.type}&keyword=${s.keyword}">next</a>
+                        <a class="page-link"
+                           href="/board/list?pageNo=${maker.end + 1}&type=${s.type}&keyword=${s.keyword}">next</a>
                     </li>
                 </c:if>
 
                 <c:if test="${maker.pageInfo.pageNo != maker.finalPage}">
                     <li class="page-item">
-                        <a class="page-link" href="/board/list?pageNo=${maker.finalPage}&type=${s.type}&keyword=${s.keyword}">&gt;&gt;</a>
+                        <a class="page-link"
+                           href="/board/list?pageNo=${maker.finalPage}&type=${s.type}&keyword=${s.keyword}">&gt;&gt;</a>
                     </li>
                 </c:if>
 
@@ -169,7 +177,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script>
@@ -239,7 +246,6 @@
     }
 
 
-
     $cardContainer.onmouseover = e => {
 
         if (!e.target.matches('.card-container *')) return;
@@ -302,7 +308,6 @@
 
     appendActivePage();
     fixSearchOption();
-
 
 
 </script>
