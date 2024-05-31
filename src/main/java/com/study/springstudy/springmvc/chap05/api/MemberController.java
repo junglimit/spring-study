@@ -43,7 +43,7 @@ public class MemberController {
         log.debug("parameter: {}", dto);
 
         boolean flag = memberService.join(dto);
-        return flag ? "redirect:/member/sign-in" :"redirect:/members/sign-up";
+        return flag ? "redirect:/members/sign-in" :"redirect:/members/sign-up";
     }
 
     // 아이디, 이메일 중복검사 비동기 요청 처리
