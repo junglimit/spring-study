@@ -13,10 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -60,13 +57,15 @@ public class MemberController {
 
     // 로그인 양식 열기
     @GetMapping("/sign-in")
-    public String signIn(HttpSession session) {
+    public String signIn(HttpSession session , @RequestParam(required = false) String redirect) {
 
 
         // 로그인을 한 사람이 요청시 돌려보냄
 //        if (LoginUtil.isLoggedIn(session)) {
 //            return "redirect:/";
 //        }
+
+        session.setAttribute("redirect", redirect);
 
         log.info("/members/sign-in GET : forwarding to sign-in.jsp");
         return "members/sign-in";
@@ -93,7 +92,15 @@ public class MemberController {
         ra.addFlashAttribute("result", result);
 
         if(result == LoginResult.SUCCESS) {
-        return "redirect:/index"; // 로그인 성공시
+
+            // 세션에 리다이렉트 URL 이 있다면
+            String redirect = (String) session.getAttribute("redirect");
+            if(redirect != null) {
+                session.removeAttribute("redirect");
+                return "redirect:" + redirect;
+            }
+
+            return "redirect:/index"; // 로그인 성공시
 
         }
         return "redirect:/members/sign-in"; // 로그인 실패시
