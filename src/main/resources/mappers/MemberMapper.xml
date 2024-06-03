@@ -13,7 +13,6 @@
     </insert>
 
     <select id="findOne" resultType="member">
-        <!--        실무에선 셀렉트* 잘 안씀    -->
         SELECT
         account
         , password
@@ -28,15 +27,26 @@
     <select id="existsById" resultType="boolean">
         SELECT COUNT(*)
         FROM tbl_member
-        <where>
-            <if test="type == 'account'">
-                account = #{keyword}
-            </if>
-            <if test="type == 'email'">
-                email = #{keyword}
-            </if>
-        </where>
+        <if test="type == 'account'">
+            WHERE account = #{keyword}
+        </if>
+        <if test="type == 'email'">
+            WHERE email = #{keyword}
+        </if>
+    </select>
 
+
+    <update id="updateAutoLogin">
+        UPDATE tbl_member
+        SET session_id = #{sessionId}, limit_time = #{limitTime}
+        WHERE account = #{account}
+    </update>
+
+    <select id="findMemberBySessionId" resultType="member">
+        SELECT
+        account, name, email, auth, limit_time
+        FROM tbl_member
+        WHERE session_id = #{sessionId}
     </select>
 
 </mapper>
