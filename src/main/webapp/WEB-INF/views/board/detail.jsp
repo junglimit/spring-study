@@ -149,6 +149,28 @@
 
 <script type="module" src="/assets/js/reply.js"></script>
 
+<script>
+    // 서버에 리액션 요청 보내는 함수
+    async function sendReaction(reactionType) {
+        console.log(reactionType);
+        const bno = document.getElementById('wrap').dataset.bno;
+
+                                    // jsp 에서 사용할때 역슬래시 써야함
+        const res = await fetch(`/board/\${reactionType}?bno=\${bno}`);
+    }
+
+    // 좋아요 클릭 이벤트
+    document.getElementById('like-btn').addEventListener('click', e => {
+        sendReaction('like');
+    });
+
+    // 싫어요 클릭 이벤트
+    document.getElementById('dislike-btn').addEventListener('click', e => {
+        sendReaction('dislike');
+    });
+
+</script>
+
 
 </body>
 
