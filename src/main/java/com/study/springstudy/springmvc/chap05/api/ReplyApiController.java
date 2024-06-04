@@ -5,8 +5,8 @@ import com.study.springstudy.springmvc.chap05.dto.request.ReplyModifyDto;
 import com.study.springstudy.springmvc.chap05.dto.request.ReplyPostDto;
 import com.study.springstudy.springmvc.chap05.dto.response.ReplyDetailDto;
 import com.study.springstudy.springmvc.chap05.dto.response.ReplyListDto;
-import com.study.springstudy.springmvc.chap05.entity.Reply;
 import com.study.springstudy.springmvc.chap05.service.ReplyService;
+import com.study.springstudy.springmvc.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -24,48 +24,50 @@ import java.util.Map;
 @RequestMapping("/api/v1/replies")
 @RequiredArgsConstructor
 @Slf4j
-@CrossOrigin // CORS 정책 허용범위 설정
 public class ReplyApiController {
+
     private final ReplyService replyService;
 
-
     // 댓글 목록 조회 요청
-    // URL : /api/vi/replies/원본글번호/page/페이지번호  - GET -> 목록조회
+    // URL : /api/v1/replies/원본글번호/page/페이지번호   -  GET -> 목록조회
     // @PathVariable : URL에 붙어있는 변수값을 읽는 아노테이션
     @GetMapping("/{bno}/page/{pageNo}")
-    public ResponseEntity<?> list (@PathVariable long bno, @PathVariable int pageNo) {
+    public ResponseEntity<?> list(
+            @PathVariable long bno
+            , @PathVariable int pageNo
+            , HttpSession session
+    ) {
 
         if (bno == 0) {
             String message = "글 번호는 0번이 될 수 없습니다.";
             log.warn(message);
-            return ResponseEntity.badRequest().body(message);
+            return ResponseEntity
+                    .badRequest()
+                    .body(message);
         }
 
-        log.info("/api/v1/replies/{} : GET ",bno);
+        log.info("/api/v1/replies/{} : GET", bno);
 
         ReplyListDto replies = replyService.getReplies(bno, new Page(pageNo, 10));
+        replies.setLoginUser(LoginUtil.getLoggedInUser(session));
 
-//        log.debug("first reply : {}", replies.get(0));
-
-
-
-        return ResponseEntity.ok().body(replies);
-
+        return ResponseEntity
+                .ok()
+                .body(replies);
     }
 
     // 댓글 생성 요청
-    // url 생략
-    // @RequestBody : 클라이언트가 전송한 데이터를 JSON 으로 받아서 파싱
+    // @RequestBody : 클라이언트가 전송한 데이터를 JSON으로 받아서 파싱
     @PostMapping
-    public ResponseEntity<?> posts(@Validated @RequestBody ReplyPostDto dto
-    , BindingResult result, HttpSession session // 입력값 검증 결과 데이터를 가지고 있는 객체
+    public ResponseEntity<?> posts(
+            @Validated @RequestBody ReplyPostDto dto
+            , BindingResult result // 입력값 검증 결과 데이터를 갖고 있는 객체
+            , HttpSession session
     ) {
-
         log.info("/api/v1/replies : POST");
-        log.debug("parameter : {}", dto);
+        log.debug("parameter: {}", dto);
 
         if (result.hasErrors()) {
-
             Map<String, String> errors = makeValidationMessageMap(result);
 
             return ResponseEntity
@@ -75,14 +77,15 @@ public class ReplyApiController {
 
         boolean flag = replyService.register(dto, session);
 
-        if(!flag) return ResponseEntity.
-                internalServerError()
+        if (!flag) return ResponseEntity
+                .internalServerError()
                 .body("댓글 등록 실패!");
 
         return ResponseEntity
                 .ok()
-                .body(replyService.getReplies(dto.getBno(), new Page(1,10)));
+                .body(replyService.getReplies(dto.getBno(), new Page(1, 10)));
     }
+
     private Map<String, String> makeValidationMessageMap(BindingResult result) {
 
         Map<String, String> errors = new HashMap<>();
@@ -97,12 +100,11 @@ public class ReplyApiController {
         return errors;
     }
 
-
     // 삭제 처리 요청
     @DeleteMapping("/{rno}")
-    public ResponseEntity<?> delete (@PathVariable long rno){
-        ReplyListDto dtoList = replyService.remove(rno);
+    public ResponseEntity<?> delete(@PathVariable long rno) {
 
+        ReplyListDto dtoList = replyService.remove(rno);
 
         return ResponseEntity
                 .ok()
@@ -110,26 +112,39 @@ public class ReplyApiController {
     }
 
     // 댓글 수정 요청
-//    @PutMapping // 전체수정
+//    @PutMapping   // 전체수정
 //    @PatchMapping // 일부수정
 
-    // PUT,PATCH 둘다 받기
+    /*
+        let obj = {
+            age : 3
+        }
+
+        PUT  -   obj = { age: 10 };
+        PATCH -  obj.age = 10;
+     */
+
     @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH})
-    public ResponseEntity<?> modify(@Validated @RequestBody ReplyModifyDto dto, BindingResult result) {
-        log.info("/api/v1/replies : POST");
-        log.debug("parameter : {}", dto);
+    public ResponseEntity<?> modify(
+            @Validated @RequestBody ReplyModifyDto dto
+            , BindingResult result
+    ) {
+
+        log.info("/api/v1/replies : PUT, PATCH");
+        log.debug("parameter: {}", dto);
 
         if (result.hasErrors()) {
-
             Map<String, String> errors = makeValidationMessageMap(result);
 
             return ResponseEntity
                     .badRequest()
                     .body(errors);
         }
+
         ReplyListDto replyListDto = replyService.modify(dto);
 
         return ResponseEntity.ok().body(replyListDto);
-    }
 
     }
+
+}
