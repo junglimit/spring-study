@@ -1,24 +1,28 @@
-import {BASE_URL} from "./reply.js";
-import {fetchInfScrollReplies} from "./getReply.js";
+import { BASE_URL } from "./reply.js";
+import { fetchInfScrollReplies, removeInfiniteScroll } from "./getReply.js";
+import { callApi } from "./api.js";
 
 // 댓글 삭제 비동기 요청 처리 함수
 const fetchDeleteReply = async (rno) => {
 
-    const res = await fetch(`${BASE_URL}/${rno}`, {
-        method: 'DELETE'
-    })
-    if (res.status !== 200) {
-        alert('삭제에 실패했습니다!')
-        return;
-    }
+    await callApi(`${BASE_URL}/${rno}`, 'DELETE');
 
-        fetchInfScrollReplies();
-        window.scrollTo(0, 0); // 삭제 후 페이지 최상단으로 이동
-}
+    // const res = await fetch(`${BASE_URL}/${rno}`, {
+    //   method: 'DELETE'
+    // });
 
+    // if (res.status === 403) {
+    //   alert('로그인이 필요한 서비스입니다.');
+    //   window.location.href = '/members/sign-in';
+    //   return;
+    // }
 
-// 서버에 댓글 삭제 요청하는 함수
-export function deleteReply() {
+    window.scrollTo(0, 0); // 삭제 후 페이지 상단으로 이동
+    await fetchInfScrollReplies();
+};
+
+// 댓글 삭제 처리 이벤트 등록 함수
+export function removeReplyClickEvent() {
 
     document.getElementById('replyData').addEventListener('click', e => {
 
@@ -31,7 +35,6 @@ export function deleteReply() {
         const rno = e.target.closest('#replyContent').dataset.replyId;
         fetchDeleteReply(rno);
 
-
-    })
+    });
 
 }

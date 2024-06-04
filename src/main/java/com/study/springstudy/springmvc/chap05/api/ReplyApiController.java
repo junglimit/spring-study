@@ -15,6 +15,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +58,7 @@ public class ReplyApiController {
     // @RequestBody : 클라이언트가 전송한 데이터를 JSON 으로 받아서 파싱
     @PostMapping
     public ResponseEntity<?> posts(@Validated @RequestBody ReplyPostDto dto
-    , BindingResult result // 입력값 검증 결과 데이터를 가지고 있는 객체
+    , BindingResult result, HttpSession session // 입력값 검증 결과 데이터를 가지고 있는 객체
     ) {
 
         log.info("/api/v1/replies : POST");
@@ -72,7 +73,7 @@ public class ReplyApiController {
                     .body(errors);
         }
 
-        boolean flag = replyService.register(dto);
+        boolean flag = replyService.register(dto, session);
 
         if(!flag) return ResponseEntity.
                 internalServerError()

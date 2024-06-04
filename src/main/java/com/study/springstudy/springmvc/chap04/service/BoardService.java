@@ -11,7 +11,6 @@ import com.study.springstudy.springmvc.chap05.entity.Reaction;
 import com.study.springstudy.springmvc.chap05.entity.ViewLog;
 import com.study.springstudy.springmvc.chap05.mapper.ReactionMapper;
 import com.study.springstudy.springmvc.chap05.mapper.ViewLogMapper;
-import com.study.springstudy.springmvc.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.WebUtils;
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,9 +72,11 @@ public class BoardService {
         HttpSession session = request.getSession();
 
         // 비회원이거나 본인 글이면 조회수 증가 방지
-        String currentUserAccount = getLoggedInUserAccount(session);// 로그인 계정명
 
-        // 상세 조회시 초기 렌더링에 그려질 데이터
+        // 로그인 계정명
+        String currentUserAccount = getLoggedInUserAccount(session);
+
+        // 상세조회시 초기렌더링에 그려질 데이터
         BoardDetailResponseDto responseDto = new BoardDetailResponseDto(b);
         responseDto.setLikeCount(reactionMapper.countLikes(bno));
         responseDto.setDislikeCount(reactionMapper.countDislikes(bno));
@@ -87,7 +87,6 @@ public class BoardService {
         if (reaction != null) {
             type = reaction.getReactionType().toString();
         }
-
         responseDto.setUserReaction(type);
 
         if (!isLoggedIn(session) || isMine(b.getAccount(), currentUserAccount)) {
@@ -98,30 +97,30 @@ public class BoardService {
 //        if (shouldIncreaseViewCount(bno, request, response)) boardMapper.upViewCount(bno);
 //        return new BoardDetailResponseDto(b);
 
+
         // 조회수가 올라가는 조건처리 (데이터베이스 버전)
 
         // 1. 지금 조회하는 글이 기록에 있는지 확인
         int boardNo = b.getBoardNo(); // 게시물 번호
         ViewLog viewLog = viewLogMapper.findOne(currentUserAccount, boardNo);
 
-        boolean shouldIncrease = false; // 조회수 올려도 되는지 확인
-
-            ViewLog viewLogEntity = ViewLog.builder()
-                    .account(currentUserAccount)
-                    .boardNo(boardNo)
-                    .viewTime(LocalDateTime.now())
-                    .build();
+        boolean shouldIncrease = false; // 조회수 올려도 되는지??
+        ViewLog viewLogEntity = ViewLog.builder()
+                .account(currentUserAccount)
+                .boardNo(boardNo)
+                .viewTime(LocalDateTime.now())
+                .build();
 
         if (viewLog == null) {
             // 2. 이 게시물이 이 회원에 의해 처음 조회됨
-            viewLogMapper.insertViewLog(viewLogEntity
-            );
+            viewLogMapper.insertViewLog(viewLogEntity);
             shouldIncrease = true;
         } else {
-            // 3. 조회기록이 있는 경우 - 1시간 이내 인지 체크
+            // 3. 조회기록이 있는 경우 - 1시간 이내 인지
+            // 혹시 1시간이 지난 게시물인지 확인
             LocalDateTime oneHourAgo = LocalDateTime.now().minusHours(1);
-            if(viewLog.getViewTime().isBefore(oneHourAgo)) {
-                // 4. db 에서 view_time 수정
+            if (viewLog.getViewTime().isBefore(oneHourAgo)) {
+                // 4. db에서 view_time 수정
                 viewLogMapper.updateViewLog(viewLogEntity);
                 shouldIncrease = true;
             }
@@ -130,6 +129,7 @@ public class BoardService {
             boardMapper.upViewCount(boardNo);
         }
         return responseDto;
+
     }
 
     // 조회수 증가 여부를 판단

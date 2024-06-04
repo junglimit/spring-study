@@ -12,19 +12,17 @@ import java.util.List;
 public class BoardDetailResponseDto {
 
     private int boardNo;
-    private String title;
     private String writer;
+    private String title;
     private String content;
     private String regDateTime;
-    private String account;
 
-    // 리액션 초기 렌더링에 필요한 값
     @Setter
-    private int likeCount;
+    private int likeCount;  // 총 좋아요 수
     @Setter
-    private int dislikeCount;
+    private int dislikeCount; // 총 싫어요 수
     @Setter
-    private String userReaction;
+    private String userReaction; // 현재 리액션 상태
 
 //    @Setter
 //    private List<Reply> replies;
@@ -35,9 +33,9 @@ public class BoardDetailResponseDto {
         this.writer = b.getWriter();
         this.content = b.getContent();
 
-
-        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 a hh시 mm분 ss초");
+        DateTimeFormatter pattern
+                = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 a hh시 mm분 ss초");
         this.regDateTime = pattern.format(b.getRegDateTime());
-        this.account = b.getAccount();
     }
+
 }

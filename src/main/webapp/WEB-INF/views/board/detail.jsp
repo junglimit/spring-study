@@ -4,26 +4,26 @@
 <html lang="ko">
 
 <head>
-
-    <%@include file="../include/static-head.jsp" %>
-
+    <%@ include file="../include/static-head.jsp" %>
     <link rel="stylesheet" href="/assets/css/detail.css">
 </head>
 
 <body>
 
-<%@include file="../include/header.jsp"%>
+<%@ include file="../include/header.jsp" %>
 
 <div id="wrap" class="form-container" data-bno="${bbb.boardNo}">
 
-    <h1>${bbb.boardNo}번 게시물 내용~ </h1>
+    <h1>${requestScope.bbb.boardNo}번 게시물 내용~ </h1>
     <h2># 작성일자: ${bbb.regDateTime}</h2>
     <label for="writer">작성자</label>
     <input type="text" id="writer" name="writer" value="${bbb.writer}" readonly>
     <label for="title">제목</label>
     <input type="text" id="title" name="title" value="${bbb.title}" readonly>
     <label for="content">내용</label>
-    <div id="content">${bbb.content}</div>
+    <div id="content">
+        ${bbb.content}
+    </div>
 
     <div class="buttons">
         <div class="reaction-buttons">
@@ -51,30 +51,34 @@
 
 
     <!-- 댓글 영역 -->
-
     <div id="replies" class="row">
         <div class="offset-md-1 col-md-10">
             <!-- 댓글 쓰기 영역 -->
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <label for="newReplyText" hidden>댓글 내용</label>
-                                <textarea rows="3" id="newReplyText" name="replyText" class="form-control"
-                                          placeholder="댓글을 입력해주세요."></textarea>
+                    <c:if test="${login == null}">
+                        <a href="/members/sign-in">댓글은 로그인 후 작성해주세요!!</a>
+                    </c:if>
+
+                    <c:if test="${login != null}">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <label for="newReplyText" hidden>댓글 내용</label>
+                                    <textarea rows="3" id="newReplyText" name="replyText" class="form-control"
+                                              placeholder="댓글을 입력해주세요."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="newReplyWriter" hidden>댓글 작성자</label>
+                                    <input id="newReplyWriter" name="replyWriter" type="text" value="${login.nickName}" readonly
+                                           class="form-control" placeholder="작성자 이름" style="margin-bottom: 6px;">
+                                    <button id="replyAddBtn" type="button" class="btn btn-dark form-control">등록</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="newReplyWriter" hidden>댓글 작성자</label>
-                                <input id="newReplyWriter" name="replyWriter" type="text"
-                                       class="form-control" placeholder="작성자 이름" style="margin-bottom: 6px;">
-                                <button id="replyAddBtn" type="button" class="btn btn-dark form-control">등록
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    </c:if>
                 </div>
             </div> <!-- end reply write -->
 
@@ -89,15 +93,15 @@
                 <div id="replyCollapse" class="card">
                     <div id="replyData">
                         <!--
-            < JS로 댓글 정보 DIV삽입 >
-            -->
+                            < JS로 댓글 정보 DIV삽입 >
+                        -->
                     </div>
 
                     <!-- 댓글 페이징 영역 -->
                     <ul class="pagination justify-content-center">
                         <!--
-            < JS로 댓글 페이징 DIV삽입 >
-            -->
+                            < JS로 댓글 페이징 DIV삽입 >
+                        -->
                     </ul>
                 </div>
             </div> <!-- end reply content -->
@@ -136,6 +140,7 @@
     </div>
 
     <!-- end replyModifyModal -->
+
     <!-- 로딩 스피너 -->
     <div class="spinner-container" id="loadingSpinner">
         <div class="spinner-border text-light" role="status">
@@ -150,7 +155,8 @@
 <script type="module" src="/assets/js/reply.js"></script>
 
 <script>
-    // 렌더링 초기에 버튼 활성화
+
+    // 렌더링 초기에 버튼활성화
     const userReaction = '${bbb.userReaction}';
     updateReactionButtons(userReaction);
 
@@ -160,7 +166,14 @@
         const bno = document.getElementById('wrap').dataset.bno;
 
         const res = await fetch(`/board/\${reactionType}?bno=\${bno}`);
-        const { likeCount, dislikeCount, userReaction } = await res.json();
+
+        if (res.status === 403) {
+            const msg = await res.text();
+            alert(msg);
+            return;
+        }
+
+        const {likeCount, dislikeCount, userReaction} = await res.json();
 
         document.getElementById('like-count').textContent = likeCount;
         document.getElementById('dislike-count').textContent = dislikeCount;
@@ -199,9 +212,6 @@
         sendReaction('dislike');
     });
 </script>
-
-
-
 
 </body>
 

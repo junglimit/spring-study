@@ -109,26 +109,43 @@ public class BoardController {
     // 좋아요 요청 비동기 처리
     @GetMapping("/like")
     @ResponseBody
-    public ResponseEntity<?> like (long bno,HttpSession session) {
+    public ResponseEntity<?> like(long bno, HttpSession session) {
+
+        // 로그인 검증
+        if (!LoginUtil.isLoggedIn(session)) {
+            return ResponseEntity.status(403)
+                    .body("로그인이 필요합니다.");
+        }
 
         log.info("like async request!");
+
         String account = LoginUtil.getLoggedInUserAccount(session);
 
-        ReactionDto dto = reactionService.like(bno, account);
+        ReactionDto dto = reactionService.like(bno, account);// 좋아요 요청 처리
 
         return ResponseEntity.ok().body(dto);
     }
+
 
     // 싫어요 요청 비동기 처리
     @GetMapping("/dislike")
     @ResponseBody
-    public ResponseEntity<?> dislike (long bno,HttpSession session) {
+    public ResponseEntity<?> dislike(long bno, HttpSession session) {
+
+        // 로그인 검증
+        if (!LoginUtil.isLoggedIn(session)) {
+            return ResponseEntity.status(403)
+                    .body("로그인이 필요합니다.");
+        }
+
         log.info("dislike async request!");
+
         String account = LoginUtil.getLoggedInUserAccount(session);
 
-        ReactionDto dto = reactionService.dislike(bno, account);
+        ReactionDto dto = reactionService.dislike(bno, account);// 싫어요 요청 처리
 
         return ResponseEntity.ok().body(dto);
     }
+
 
 }
