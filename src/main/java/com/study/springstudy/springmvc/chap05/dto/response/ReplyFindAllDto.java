@@ -1,5 +1,4 @@
-package com.study.springstudy.springmvc.chap05.entity;
-
+package com.study.springstudy.springmvc.chap05.dto.response;
 
 import lombok.*;
 
@@ -10,9 +9,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Reply {
+public class ReplyFindAllDto {
+
     private long replyNo;
-    @Setter
     private String replyText;
     private String replyWriter;
     private LocalDateTime replyDate;

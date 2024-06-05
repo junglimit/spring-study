@@ -75,6 +75,18 @@
                                     <input id="newReplyWriter" name="replyWriter" type="text" value="${login.nickName}" readonly
                                            class="form-control" placeholder="작성자 이름" style="margin-bottom: 6px;">
                                     <button id="replyAddBtn" type="button" class="btn btn-dark form-control">등록</button>
+
+                                    <div class="profile-box">
+
+                                        <c:choose>
+                                            <c:when test="${login != null && login.profile != null}">
+                                                <img src="${login.profile}" alt="profile image">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img src="/assets/img/anonymous.jpg" alt="profile image">
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
                                 </div>
                             </div>
                         </div>

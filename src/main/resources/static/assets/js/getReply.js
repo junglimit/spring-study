@@ -1,6 +1,7 @@
 import {BASE_URL} from './reply.js';
 import {showSpinner, hideSpinner} from './spinner.js';
 import {callApi} from './api.js';
+import {debounce} from "./util.js";
 
 function getRelativeTime(createAt) {
     // 현재 시간 구하기
@@ -72,9 +73,11 @@ export function renderReplies({pageInfo, replies}) {
             tag += `
         <div id='replyContent' class='card-body' data-reply-id='${rno}'>
             <div class='row user-block'>
-                <span class='col-md-3'>
+                <span class='col-md-3 writerColor'>
                     <b>${writer}</b>
                 </span>
+                
+               
                 <span class='offset-md-6 col-md-3 text-right'><b>${getRelativeTime(
                 createAt
             )}</b></span>
@@ -139,23 +142,41 @@ function appendReplies({replies, loginUser}) {
     // 댓글 목록 렌더링
     let tag = '';
     if (replies && replies.length > 0) {
-        replies.forEach(({reply_no: rno, writer, text, createAt, account: replyAccount}) => {
+        replies.forEach(({reply_no: rno, writer, text, createAt, profileImg, account: replyAccount}) => {
+            // 관리자이거나 내가 쓴 댓글일 경우만 조건부 렌더링
+
             tag += `
         <div id='replyContent' class='card-body' data-reply-id='${rno}'>
             <div class='row user-block'>
                 <span class='col-md-3'>
-                    <b>${writer}</b>
+
+                    <b class="writerId">${writer}</b>
+                    
+                    
+                    
+                    `;
+
+                    if(profileImg !== null){
+                       tag+= `<img src="${profileImg}" alt="profile image" id="profileImg">`
+                    }else{
+                       tag+=` <img src="/assets/img/anonymous.jpg" alt="profile image" id="profileImg">`
+                    }
+                  tag+= ` 
+                    
+                    
                 </span>
+                
                 <span class='offset-md-6 col-md-3 text-right'><b>${getRelativeTime(
                 createAt
             )}</b></span>
             </div><br>
+            <div>
+            
+</div>
             <div class='row'>
                 <div class='col-md-9'>${text}</div>
                 <div class='col-md-3 text-right'>
                 `;
-
-            // 관리자이거나 내가 쓴 댓글일 경우만 조건부 렌더링
             // 로그인한 회원 권환, 로그인한 회원 계정명, 해당 댓글의 계정명
             if (loginUser) {
 
@@ -247,8 +268,9 @@ async function scrollHandler(e) {
 
 // 무한 스크롤 이벤트 생성 함수
 export function setupInfiniteScroll() {
-    window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('scroll', debounce(scrollHandler, 200));
 }
+
 
 // 무한 스크롤 이벤트 삭제 함수
 export function removeInfiniteScroll() {

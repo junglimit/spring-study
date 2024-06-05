@@ -33,12 +33,20 @@ public class FileUtil {
 
         // 파일 업로드 수행
         try {
-            file.transferTo(new File(newUploadPath , newFileName));
+            file.transferTo(new File(newUploadPath, newFileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return "";
+        // 파일 전체 경로
+        String fullPath = newUploadPath + "/" + newFileName;
+
+        // url-path : /local/2024/06/05/29005323-c0e0-4761-a17a-92b2a5741fc6_햄.png
+        String urlPath = "/local"+fullPath.substring(rootPath.length());
+
+        // 업로드가 완료되면 데이터베이스에 파일의 경로 위치를 저장
+        // ex) /local/2024/06/05/어쩌고저쩌고_해윙.jpg
+        return urlPath;
 
     }
 
