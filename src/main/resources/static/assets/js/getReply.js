@@ -138,7 +138,17 @@ let totalReplies = 0; // 총 댓글 수
 let loadedReplies = 0; // 로딩된 댓글 수
 
 
-function appendReplies({replies, loginUser}) {
+function appendReplies({replies, loginUser}, reset) {
+
+    const $replyData = document.getElementById('replyData');
+
+    // reset모드일경우 댓글을 모두 지움
+    if (reset) {
+        $replyData.innerHTML = '';
+        return;
+    }
+
+
     // 댓글 목록 렌더링
     let tag = '';
     if (replies && replies.length > 0) {
@@ -202,15 +212,20 @@ function appendReplies({replies, loginUser}) {
     console.log('append replies');
 
     // 로드된 댓글 수 업데이트
-    loadedReplies += replies.length;
+    // loadedReplies += replies.length;
+
+    $replyData.innerHTML += tag;
+
 }
 
+
 // 서버에서 댓글 데이터를 페칭
-export async function fetchInfScrollReplies(pageNo = 1) {
+export async function fetchInfScrollReplies(pageNo = 1, reset = false) {
 
     if (isFetching) return; // 서버에서 데이터를 가져오는 중이면 return
 
     isFetching = true;
+    if(pageNo >= 1) showSpinner();
 
     const bno = document.getElementById('wrap').dataset.bno; // 게시물 글번호
 
@@ -223,27 +238,44 @@ export async function fetchInfScrollReplies(pageNo = 1) {
     if (pageNo === 1) {
         // 총 댓글 수 전역변수 값 세팅
         totalReplies = replyResponse.pageInfo.totalCount;
-        loadedReplies = 0; // 댓글 입력, 삭제시 다시 1페이지 로딩시 초기값으로 만들어주기
         // 댓글 수 렌더링
         document.getElementById('replyCnt').textContent = totalReplies;
         // 초기 댓글 reset
-        document.getElementById('replyData').innerHTML = '';
-        console.log('reset replyData');
+        loadedReplies = 0; // 댓글 입력, 삭제시 다시 1페이지 로딩시 초기값으로 만들어주기
+        // document.getElementById('replyData').innerHTML = '';
+        // console.log('reset replyData');
 
-        setupInfiniteScroll();
+        // setupInfiniteScroll();
+        appendReplies([],true);
     }
 
-    // 댓글 목록 렌더링
-    // console.log(replyResponse);
-    appendReplies(replyResponse);
-    currentPage = pageNo;
-    isFetching = false;
-    hideSpinner();
+    // // 댓글 목록 렌더링
+    // // console.log(replyResponse);
+    // appendReplies(replyResponse);
+    // currentPage = pageNo;
+    // isFetching = false;
+    // hideSpinner();
+    //
+    // // 댓글을 전부 가져올 시 스크롤 이벤트 제거하기
+    // if (loadedReplies >= totalReplies) {
+    //     removeInfiniteScroll();
+    // }
+    const spinnerMinTime = 800; // 최소 스피너 표시 시간 (0.8초)
 
-    // 댓글을 전부 가져올 시 스크롤 이벤트 제거하기
-    if (loadedReplies >= totalReplies) {
-        removeInfiniteScroll();
-    }
+    setTimeout(() => {
+        hideSpinner();
+        appendReplies(replyResponse);
+        // 로드된 댓글 수 업데이트
+        loadedReplies += replyResponse.replies.length;
+        currentPage = pageNo;
+
+        // 댓글을 전부 가져올 시 스크롤 이벤트 제거하기
+        if (loadedReplies >= totalReplies) {
+            removeInfiniteScroll();
+        }
+
+        isFetching = false;
+    }, spinnerMinTime);
 
 }
 
@@ -260,21 +292,31 @@ async function scrollHandler(e) {
         // console.log(e);
         // 서버에서 데이터를 비동기로 불러와야 함
         // 2초의 대기열이 생성되면 다음 대기열 생성까지 2초를 기다려야 함.
-        showSpinner();
-        await new Promise(resolve => setTimeout(resolve, 500));
+        // showSpinner();
+        // await new Promise(resolve => setTimeout(resolve, 500));
         await fetchInfScrollReplies(currentPage + 1);
     }
 }
 
+const debounceScrollHandler = debounce(scrollHandler, 500);
+
 // 무한 스크롤 이벤트 생성 함수
 export function setupInfiniteScroll() {
-    window.addEventListener('scroll', debounce(scrollHandler, 200));
+    window.addEventListener('scroll', debounceScrollHandler);
 }
 
 
 // 무한 스크롤 이벤트 삭제 함수
 export function removeInfiniteScroll() {
-    window.removeEventListener('scroll', scrollHandler);
+    window.removeEventListener('scroll', debounceScrollHandler);
+}
+
+export async function initInfScroll() {
+    removeInfiniteScroll();
+    window.scrollTo(0, 0);
+    currentPage = 1;
+    fetchInfScrollReplies(1, true);
+    setupInfiniteScroll();
 }
 
 
