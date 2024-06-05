@@ -5,6 +5,7 @@ import com.study.springstudy.springmvc.chap05.dto.request.SignUpDto;
 import com.study.springstudy.springmvc.chap05.dto.response.LoginUserInfoDto;
 import com.study.springstudy.springmvc.chap05.service.LoginResult;
 import com.study.springstudy.springmvc.chap05.service.MemberService;
+import com.study.springstudy.springmvc.util.FileUtil;
 import com.study.springstudy.springmvc.util.LoginUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpSession;
 public class MemberController {
 
     private final MemberService memberService;
+    private String rootPath = "/Users/jeongjaehan/Desktop/spring-prj/upload";
 
     // 회원가입 양식 열기
     @GetMapping("/sign-up")
@@ -43,6 +45,10 @@ public class MemberController {
 
         log.info("/members/sign-up POST ");
         log.debug("parameter: {}", dto);
+        log.debug("attached profile image name: {}", dto.getProfileImage().getOriginalFilename());
+
+        // 서버에 업로드
+        FileUtil.uploadFile(rootPath,dto.getProfileImage());
 
         boolean flag = memberService.join(dto);
 
