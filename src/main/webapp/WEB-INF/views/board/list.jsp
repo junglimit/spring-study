@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/assets/css/list.css">
 
     <style>
-        .card-container .card .card-title-wrapper .time-view-wrapper>div.hit {
+        .card-container .card .card-title-wrapper .time-view-wrapper > div.hit {
             background: yellow;
         }
     </style>
@@ -33,7 +33,7 @@
         <!-- 검색창 영역 -->
         <div class="search">
             <form action="/board/list" method="get">
-
+            <input type="hidden" name="amount" value="${s.amount}">
                 <select class="form-select" name="type" id="search-type">
                     <option value="title">제목</option>
                     <option value="content">내용</option>
@@ -124,7 +124,8 @@
 
                 <c:if test="${maker.pageInfo.pageNo != 1}">
                     <li class="page-item">
-                        <a class="page-link" href="/board/list?pageNo=1&type=${s.type}&keyword=${s.keyword}&amount=${maker.pageInfo.amount}">&lt;&lt;</a>
+                        <a class="page-link"
+                           href="/board/list?pageNo=1&type=${s.type}&keyword=${s.keyword}&amount=${maker.pageInfo.amount}">&lt;&lt;</a>
                     </li>
                 </c:if>
 
@@ -137,7 +138,8 @@
 
                 <c:forEach var="i" begin="${maker.begin}" end="${maker.end}">
                     <li data-page-num="${i}" class="page-item">
-                        <a class="page-link" href="/board/list?pageNo=${i}&type=${s.type}&keyword=${s.keyword}&amount=${maker.pageInfo.amount}">${i}</a>
+                        <a class="page-link"
+                           href="/board/list?pageNo=${i}&type=${s.type}&keyword=${s.keyword}&amount=${maker.pageInfo.amount}">${i}</a>
                     </li>
                 </c:forEach>
 
@@ -175,7 +177,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script>
@@ -245,7 +246,6 @@
     }
 
 
-
     $cardContainer.onmouseover = e => {
 
         if (!e.target.matches('.card-container *')) return;
@@ -304,10 +304,9 @@
         // 3. 해당 태그에 selected 속성 부여
         $option?.setAttribute('selected', 'selected');
     }
+
     appendActivePage();
     fixSearchOption();
-
-
 
 
 </script>
