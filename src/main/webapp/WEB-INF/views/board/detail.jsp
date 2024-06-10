@@ -223,6 +223,8 @@
     document.getElementById('dislike-btn').addEventListener('click', e => {
         sendReaction('dislike');
     });
+
+
 </script>
 
 </body>

@@ -208,8 +208,8 @@ function appendReplies({replies, loginUser}, reset) {
     } else {
         tag = `<div id='replyContent' class='card-body'>댓글이 아직 없습니다! ㅠㅠ</div>`;
     }
-    document.getElementById('replyData').innerHTML += tag;
-    console.log('append replies');
+    // document.getElementById('replyData').innerHTML += tag;
+    // console.log('append replies');
 
     // 로드된 댓글 수 업데이트
     // loadedReplies += replies.length;
