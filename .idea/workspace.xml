@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec3da5f4-95c0-4ce2-96e2-c5d6bdbf9b4b" name="변경" comment="Board List - 페이지 어마운트 조절">
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/list.jsp" afterDir="false" />
+    <list default="true" id="ec3da5f4-95c0-4ce2-96e2-c5d6bdbf9b4b" name="변경" comment="# 카카오 로그인 처리">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/springstudy/springmvc/chap05/mapper/MemberMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +41,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="jsp template" />
-        <option value="JUnit5 Test Class" />
         <option value="spring-beans.schema" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="jsp template" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -91,75 +92,77 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Gradle.HotelDiTest.diTest.executor": "Run",
-    "Gradle.HotelTest.hotelTest.executor": "Run",
-    "Gradle.springstudy [:Main.main()].executor": "Run",
-    "Gradle.springstudy [clean].executor": "Run",
-    "Gradle.springstudy 빌드.executor": "Run",
-    "Gradle.소스 다운로드.executor": "Run",
-    "HTTP 요청.generated-requests | #6.executor": "Run",
-    "JUnit.BoardMapperTest.insertTest.executor": "Run",
-    "JUnit.BoardRepositoryImplTest.deleteTest.executor": "Run",
-    "JUnit.BoardRepositoryImplTest.findAll.executor": "Run",
-    "JUnit.BoardRepositoryImplTest.saveTest.executor": "Run",
-    "JUnit.HotelSpringDITest.diTest.executor": "Run",
-    "JUnit.LogExampleTest.logTest.executor": "Run",
-    "JUnit.MemberMapperTest.encodingTest.executor": "Run",
-    "JUnit.MemberMapperTest.existsTest.executor": "Run",
-    "JUnit.MemberMapperTest.existsTest2.executor": "Run",
-    "JUnit.MemberMapperTest.findOneTest.executor": "Run",
-    "JUnit.MemberMapperTest.saveTest.executor": "Run",
-    "JUnit.MemberServiceTest.joinTest.executor": "Run",
-    "JUnit.MemberServiceTest.noAccTest.executor": "Run",
-    "JUnit.MemberServiceTest.noPwTest.executor": "Run",
-    "JUnit.MemberServiceTest.successTest.executor": "Run",
-    "JUnit.PersonMapperTest.delTest.executor": "Run",
-    "JUnit.PersonMapperTest.findAllTest.executor": "Run",
-    "JUnit.PersonMapperTest.findNamesTest.executor": "Run",
-    "JUnit.PersonMapperTest.findOneTest.executor": "Run",
-    "JUnit.PersonMapperTest.saveTest.executor": "Run",
-    "JUnit.PersonMapperTest.updateTest.executor": "Run",
-    "JUnit.PersonTest.test.executor": "Run",
-    "JUnit.ReplyMapperTest.bulkInsert.executor": "Run",
-    "JUnit.ReplyMapperTest.deleteTest.executor": "Run",
-    "JUnit.ReplyMapperTest.findAllTest.executor": "Run",
-    "JUnit.ReplyMapperTest.modifyTest.executor": "Run",
-    "JUnit.ScoreMapperTest.findAllTest.executor": "Run",
-    "JUnit.ScoreMapperTest.findOneTest.executor": "Run",
-    "JUnit.ScoreMapperTest.rankTest.executor": "Run",
-    "JUnit.SpringJdbcTest.deleteTest.executor": "Run",
-    "JUnit.SpringJdbcTest.findAllTest.executor": "Run",
-    "JUnit.SpringJdbcTest.findOneTest.executor": "Run",
-    "JUnit.SpringJdbcTest.modifyTest.executor": "Run",
-    "JUnit.SpringJdbcTest.saveTest.executor": "Run",
-    "JUnit.StudentTest.sTest.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.Main.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/superstar/Desktop/develop/springstudy",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/superstar/Desktop/develop/springstudy/src/main/java/com/study/Main.java",
-    "project.structure.last.edited": "프로젝트",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editing.templates",
-    "vue.rearranger.settings.migration": "true",
-    "애플리케이션.Main.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.HotelDiTest.diTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HotelTest.hotelTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.springstudy [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.springstudy [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.springstudy 빌드.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.소스 다운로드.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP 요청.generated-requests | #6.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardMapperTest.insertTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardRepositoryImplTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardRepositoryImplTest.findAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BoardRepositoryImplTest.saveTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.HotelSpringDITest.diTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LogExampleTest.logTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberMapperTest.encodingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberMapperTest.existsTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberMapperTest.existsTest2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberMapperTest.findOneTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberMapperTest.saveTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberServiceTest.joinTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberServiceTest.noAccTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberServiceTest.noPwTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberServiceTest.successTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersonMapperTest.delTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersonMapperTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersonMapperTest.findNamesTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersonMapperTest.findOneTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersonMapperTest.saveTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersonMapperTest.updateTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PersonTest.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReplyMapperTest.bulkInsert.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReplyMapperTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReplyMapperTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReplyMapperTest.modifyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScoreMapperTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScoreMapperTest.findOneTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScoreMapperTest.rankTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SpringJdbcTest.deleteTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SpringJdbcTest.findAllTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SpringJdbcTest.findOneTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SpringJdbcTest.modifyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SpringJdbcTest.saveTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StudentTest.sTest.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/superstar/Desktop/develop/springstudy&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/superstar/Desktop/develop/springstudy/src/main/java/com/study/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;애플리케이션.Main.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.study.springstudy.springmvc.chap05.entity" />
@@ -179,14 +182,15 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static/assets/img" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.study.springstudy.springmvc.util" />
       <recent name="com.study.springstudy.springmvc.chap05.service" />
       <recent name="com.study.springstudy.springmvc.chap05.mapper" />
       <recent name="com.study.springstudy.springmvc" />
       <recent name="com.study.springstudy.springmvc.chap05" />
-      <recent name="com.study.springstudy.springmvc.chap04.mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.study.springstudy.webservlet.chap02.v3.controller" />
@@ -292,6 +296,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-396cc1b2" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -302,70 +313,11 @@
       <updated>1715582906822</updated>
       <workItem from="1716528901753" duration="151000" />
       <workItem from="1716767867006" duration="45000" />
-    </task>
-    <task id="LOCAL-00020" summary="3 tier architecture - part2">
-      <option name="closed" value="true" />
-      <created>1716182242825</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1716182242825</updated>
-    </task>
-    <task id="LOCAL-00021" summary="3 tier architecture - part3">
-      <option name="closed" value="true" />
-      <created>1716185279059</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1716185279059</updated>
-    </task>
-    <task id="LOCAL-00022" summary="마이바티스 part1">
-      <option name="closed" value="true" />
-      <created>1716259944025</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1716259944025</updated>
-    </task>
-    <task id="LOCAL-00023" summary="마이바티스 part2">
-      <option name="closed" value="true" />
-      <created>1716260351205</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1716260351205</updated>
-    </task>
-    <task id="LOCAL-00024" summary="마이바티스 part3">
-      <option name="closed" value="true" />
-      <created>1716274373880</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1716274373880</updated>
-    </task>
-    <task id="LOCAL-00025" summary="페이징 기초">
-      <option name="closed" value="true" />
-      <created>1716339036952</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1716339036952</updated>
-    </task>
-    <task id="LOCAL-00026" summary="페이징 렌더링 알고리즘 1">
-      <option name="closed" value="true" />
-      <created>1716342968818</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1716342968818</updated>
-    </task>
-    <task id="LOCAL-00027" summary="페이징 렌더링 알고리즘 2 - 마지막 구간 끝페이지 보정">
-      <option name="closed" value="true" />
-      <created>1716344734520</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1716344734520</updated>
+      <workItem from="1717545967427" duration="52578000" />
+      <workItem from="1718257069868" duration="192000" />
+      <workItem from="1718343271554" duration="13666000" />
+      <workItem from="1718609662134" duration="15586000" />
+      <workItem from="1718854880917" duration="1253000" />
     </task>
     <task id="LOCAL-00028" summary="페이징 렌더링 알고리즘 3 - 이전, 다음 활성화">
       <option name="closed" value="true" />
@@ -695,7 +647,71 @@
       <option name="project" value="LOCAL" />
       <updated>1717486778629</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="파일업로드">
+      <option name="closed" value="true" />
+      <created>1717549847531</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1717549847531</updated>
+    </task>
+    <task id="LOCAL-00070" summary="회원가입 프로필 이미지 추가 기능 - 프론트">
+      <option name="closed" value="true" />
+      <created>1717552289168</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1717552289168</updated>
+    </task>
+    <task id="LOCAL-00071" summary="회원가입 프로필 이미지 추가 기능 - 서버 저장">
+      <option name="closed" value="true" />
+      <created>1717552673994</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1717552673994</updated>
+    </task>
+    <task id="LOCAL-00072" summary="게시글 댓글 프로필 이미지 추가">
+      <option name="closed" value="true" />
+      <created>1717576365990</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1717576365991</updated>
+    </task>
+    <task id="LOCAL-00073" summary="게시판 댓글 무한스크롤 버그픽스">
+      <option name="closed" value="true" />
+      <created>1717580682665</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1717580682665</updated>
+    </task>
+    <task id="LOCAL-00074" summary="# 카카오 로그인 인가 코드 발급">
+      <option name="closed" value="true" />
+      <created>1717980731786</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1717980731786</updated>
+    </task>
+    <task id="LOCAL-00075" summary="# 카카오 로그인 정보 가져오기">
+      <option name="closed" value="true" />
+      <created>1717984848167</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1717984848167</updated>
+    </task>
+    <task id="LOCAL-00076" summary="# 카카오 로그인 처리">
+      <option name="closed" value="true" />
+      <created>1717986776782</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1717986776782</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,14 +730,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="무한스크롤 완성" />
-    <MESSAGE value="댓글 삭제 기능" />
-    <MESSAGE value="댓글 수정 백엔드" />
-    <MESSAGE value="댓글 수정 프론트엔드" />
-    <MESSAGE value="# 회원관리 시스템 만들기 - Entity, Mapper 생성" />
-    <MESSAGE value="# 회원가입 패스워드 인코딩 처리" />
-    <MESSAGE value="# include" />
-    <MESSAGE value="# 회원가입 클라이언트 아이디 입력검증" />
     <MESSAGE value="# 회원가입 입력값 검증 완료" />
     <MESSAGE value="# 로그인 검증 처리" />
     <MESSAGE value="# 로그인 세션 처리" />
@@ -739,6 +747,14 @@
     <MESSAGE value="댓글 인가처리" />
     <MESSAGE value="댓글 인가처리 - 내가 쓴 글만 수정/삭제 권한 부여" />
     <MESSAGE value="Board List - 페이지 어마운트 조절" />
-    <option name="LAST_COMMIT_MESSAGE" value="Board List - 페이지 어마운트 조절" />
+    <MESSAGE value="파일업로드" />
+    <MESSAGE value="회원가입 프로필 이미지 추가 기능 - 프론트" />
+    <MESSAGE value="회원가입 프로필 이미지 추가 기능 - 서버 저장" />
+    <MESSAGE value="게시글 댓글 프로필 이미지 추가" />
+    <MESSAGE value="게시판 댓글 무한스크롤 버그픽스" />
+    <MESSAGE value="# 카카오 로그인 인가 코드 발급" />
+    <MESSAGE value="# 카카오 로그인 정보 가져오기" />
+    <MESSAGE value="# 카카오 로그인 처리" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 카카오 로그인 처리" />
   </component>
 </project>
